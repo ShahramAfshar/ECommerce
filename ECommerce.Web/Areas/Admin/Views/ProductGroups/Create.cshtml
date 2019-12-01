@@ -1,9 +1,8 @@
-﻿@model  ECommerce.DomainModel.ProductGroup
-
+﻿
+@model ECommerce.DomainModel.ProductGroup
 
 @using (Ajax.BeginForm("Create", "ProductGroups", FormMethod.Post, new AjaxOptions()
 {
-
     OnSuccess = "success",
     UpdateTargetId = "myListGroup"
 }))
@@ -12,7 +11,7 @@
 
     <div class="form-horizontal">
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(g=>g.ParentId)
+        @Html.HiddenFor(g => g.ParentId)
         @*<input type="hidden" name="ParentId" value="@ViewBag.parentId" />*@
 
         <div class="form-group">
@@ -30,7 +29,5 @@
         </div>
     </div>
 }
-
-
 
 

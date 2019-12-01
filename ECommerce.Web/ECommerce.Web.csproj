@@ -181,6 +181,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductGroupsController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -287,12 +288,12 @@
     <Content Include="Areas\Admin\TemplateAdminPanel\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Areas\Admin\Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Admin\Views\ProductGroups\Create.cshtml" />
     <Content Include="Areas\Admin\Views\ProductGroups\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\ProductGroups\Details.cshtml" />
     <Content Include="Areas\Admin\Views\ProductGroups\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\ProductGroups\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ProductGroups\ListGroup.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductGroups\Create.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -343,6 +344,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\Home\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
