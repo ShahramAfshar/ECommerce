@@ -43,5 +43,11 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ECommerce.DomainModel\ECommerce.DomainModel.csproj">
+      <Project>{1896496e-6c88-446f-a42c-d16f3e363892}</Project>
+      <Name>ECommerce.DomainModel</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -265,6 +265,16 @@
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ECommerce.Data\ECommerce.Data.csproj">
+      <Project>{49373529-e105-45d4-aadf-73968eee6168}</Project>
+      <Name>ECommerce.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ECommerce.DomainModel\ECommerce.DomainModel.csproj">
+      <Project>{1896496e-6c88-446f-a42c-d16f3e363892}</Project>
+      <Name>ECommerce.DomainModel</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
