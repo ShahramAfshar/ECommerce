@@ -3,9 +3,11 @@
 
 @using (Ajax.BeginForm("Create", "ProductGroups", FormMethod.Post, new AjaxOptions()
 {
+
     OnSuccess = "success",
     UpdateTargetId = "myListGroup"
 }))
+
 {
     @Html.AntiForgeryToken()
 

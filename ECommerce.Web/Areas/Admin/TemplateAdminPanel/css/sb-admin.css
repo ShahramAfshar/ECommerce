@@ -7,6 +7,10 @@ body {
     background-color: #f8f8f8;
 }
 
+.mg-top-15{
+    margin-top:15px;
+}
+
 @media(min-width:768px) {
     body {
         padding-top: 50px;
