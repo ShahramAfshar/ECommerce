@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Text;
 using System.Threading.Tasks;
-
+using ECommerce.Data.Repositories;
 
 namespace ECommerce.Data
 {
@@ -39,20 +39,48 @@ namespace ECommerce.Data
         #endregion
 
         #region Repositories
-        //private UnitRepository unitRepository;
-        //public UnitRepository UnitRepository
-        //{
-        //    get
-        //    {
-        //        if (unitRepository == null)
-        //        {
-        //            unitRepository = new UnitRepository(db);
-        //        }
+        private ProductRepository productRepository;
+        public ProductRepository ProductRepository
+        {
+            get
+            {
+                if (productRepository == null)
+                {
+                    productRepository = new ProductRepository(db);
+                }
 
-        //        return unitRepository;
-        //    }
-        //}
+                return productRepository;
+            }
+        }
 
+        private ProductGroupRepository productGroupRepository;
+        public ProductGroupRepository ProductGroupRepository
+        {
+            get
+            {
+                if (productGroupRepository == null)
+                {
+                    productGroupRepository = new ProductGroupRepository(db);
+                }
+
+                return productGroupRepository;
+            }
+        }
+
+
+        private Product_ProductGroupRepository product_ProductGroupRepository;
+        public Product_ProductGroupRepository Product_ProductGroupRepository
+        {
+            get
+            {
+                if (product_ProductGroupRepository == null)
+                {
+                    product_ProductGroupRepository = new Product_ProductGroupRepository(db);
+                }
+
+                return product_ProductGroupRepository;
+            }
+        }
 
 
         #endregion
