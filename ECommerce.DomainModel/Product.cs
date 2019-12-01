@@ -45,6 +45,9 @@ namespace ECommerce.DomainModel
         [Display(Name = "تعداد فروش")]
         public Nullable<int> CountSale { get; set; }
 
+        //Relations
+
+        public virtual ICollection<Product_ProductGroup>  Product_ProductGroups { get; set; }
 
 
     }
