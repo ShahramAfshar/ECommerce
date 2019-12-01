@@ -188,6 +188,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912010838443_initial.cs" />
+    <Compile Include="Migrations\201912010838443_initial.Designer.cs">
+      <DependentUpon>201912010838443_initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -361,6 +366,11 @@
       <Project>{1896496e-6c88-446f-a42c-d16f3e363892}</Project>
       <Name>ECommerce.DomainModel</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201912010838443_initial.resx">
+      <DependentUpon>201912010838443_initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
