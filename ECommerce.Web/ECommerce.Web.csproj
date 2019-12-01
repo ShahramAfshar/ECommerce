@@ -200,6 +200,12 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Utility\CheckContentImage.cs" />
+    <Compile Include="Utility\ImageResizer.cs" />
+    <Compile Include="Utility\PartialToStringClass.cs" />
+    <Compile Include="Utility\PersianCal.cs" />
+    <Compile Include="Utility\PersianCulture.cs" />
+    <Compile Include="Utility\SendEmail.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\TemplateAdminPanel\blank.html" />

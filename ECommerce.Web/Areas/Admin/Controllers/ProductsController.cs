@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using ECommerce.Data;
 using ECommerce.Data.DatabaseContext;
 using ECommerce.DomainModel;
 
@@ -13,12 +14,12 @@ namespace ECommerce.Web.Areas.Admin.Controllers
 {
     public class ProductsController : Controller
     {
-        private MyDbContext db = new MyDbContext();
+        private readonly UnitOfWork<MyDbContext> db = new UnitOfWork<MyDbContext>();
 
         // GET: Admin/Products
         public ActionResult Index()
         {
-            return View(db.Products.ToList());
+            return View(db.ProductRepository.GetAll());
         }
 
         // GET: Admin/Products/Details/5
@@ -28,7 +29,7 @@ namespace ECommerce.Web.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Products.Find(id);
+            Product product = db.ProductRepository.GetById(id.Value);
             if (product == null)
             {
                 return HttpNotFound();
@@ -39,6 +40,7 @@ namespace ECommerce.Web.Areas.Admin.Controllers
         // GET: Admin/Products/Create
         public ActionResult Create()
         {
+            ViewBag.Groups = db.ProductGroupRepository.GetAll();
             return View();
         }
 
@@ -47,16 +49,55 @@ namespace ECommerce.Web.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ProductId,ProductTitle,ShortDescription,Text,Price,CreateDate,ImageName,CountSale")] Product product)
+        public ActionResult Create([Bind(Include = "ProductId,ProductTitle,ShortDescription,Text,Price,CreateDate,ImageName,CountSale")] Product product, List<int> selectedGroups, HttpPostedFileBase imageProduct, string tags)
         {
+
             if (ModelState.IsValid)
             {
-                db.Products.Add(product);
+                if (selectedGroups == null)
+                {
+                    ViewBag.ErrorSelectedGroup = true;
+                    ViewBag.Groups = db.ProductGroupRepository.GetAll();
+                    return View(product);
+                }
+                product.ImageName = "images.jpg";
+                if (imageProduct != null && imageProduct.IsImage())
+                {
+                    products.ImageName = Guid.NewGuid().ToString() + Path.GetExtension(imageProduct.FileName);
+                    imageProduct.SaveAs(Server.MapPath("/Images/ProductImages/" + products.ImageName));
+                    ImageResizer img = new ImageResizer();
+                    img.Resize(Server.MapPath("/Images/ProductImages/" + products.ImageName),
+                        Server.MapPath("/Images/ProductImages/Thumb/" + products.ImageName));
+                }
+                products.CreateDate = DateTime.Now;
+                db.Products.Add(products);
+
+                foreach (int selectedGroup in selectedGroups)
+                {
+                    db.Prodct_Selected_Groups.Add(new Prodct_Selected_Groups()
+                    {
+                        ProductID = products.ProductID,
+                        GroupID = selectedGroup
+                    });
+                }
+
+                if (!string.IsNullOrEmpty(tags))
+                {
+                    string[] tag = tags.Split(',');
+                    foreach (string t in tag)
+                    {
+                        db.Product_Tags.Add(new Product_Tags()
+                        {
+                            ProductID = products.ProductID,
+                            Tag = t.Trim()
+                        });
+                    }
+                }
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
-            return View(product);
+            ViewBag.Groups = db.Product_Groups.ToList();
+            return View(products);
         }
 
         // GET: Admin/Products/Edit/5
