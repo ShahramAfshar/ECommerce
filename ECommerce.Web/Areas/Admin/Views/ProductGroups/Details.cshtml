@@ -1,0 +1,39 @@
+﻿@model DomainClass.ProductGroup
+
+@{
+    ViewBag.Title = "جزئیات گروه محصول";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header"> حزئیات گروه محصول</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+
+<div class="row">
+    <h4>ProductGroup</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductGroup2.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductGroup2.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ProductGroupId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

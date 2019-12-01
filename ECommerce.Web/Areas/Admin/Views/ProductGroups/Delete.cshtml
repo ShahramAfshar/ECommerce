@@ -1,0 +1,37 @@
+﻿@model DomainClass.ProductGroup
+
+
+<div>
+    <h4>ProductGroup</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductGroup2.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductGroup2.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+    </dl>
+
+    @using (Ajax.BeginForm("Delete","ProductGroups",FormMethod.Post,new AjaxOptions() {
+        OnSuccess="success",
+        UpdateTargetId="myListGroup"
+    })) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

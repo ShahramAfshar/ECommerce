@@ -13,25 +13,28 @@ namespace ECommerce.Data.Repositories
     {
         //------Definition Private Functions Model -------------//
         //   IList<User> GetActiveUsers();
-
+        IEnumerable<ProductGroup> GetHeadGroup();
+        IEnumerable<ProductGroup> GetSubGroupForOneHeader(int id);
     }
 
     public class ProductGroupRepository : Repository<ProductGroup>, IProductGroupRepository
     {
 
-            private readonly DbContext db;
-            public ProductGroupRepository(DbContext dbContext) : base(dbContext)
-            {
-                this.db = (this.db ?? (MyDbContext)db);
-            }
+        private readonly DbContext db;
+        public ProductGroupRepository(DbContext dbContext) : base(dbContext)
+        {
+            this.db = (this.db ?? (MyDbContext)db);
+        }
 
-            //public IList<User> GetActiveUsers()
-            //{
-            //    var users = GetAll().Where(u => u.IsActive)
-            //        .ToList();
-            //    return users;
-            //}
-        
+        public IEnumerable<ProductGroup> GetHeadGroup()
+        {
+            return GetAll().Where(g => g.ParentId == null).ToList();
+        }
+        public IEnumerable<ProductGroup> GetSubGroupForOneHeader(int id)
+        {
+            return GetAll().Where(g => g.ParentId == id).ToList();
+        }
+
 
 
     }
