@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -63,21 +64,21 @@ namespace ECommerce.Web.Areas.Admin.Controllers
                 product.ImageName = "images.jpg";
                 if (imageProduct != null && imageProduct.IsImage())
                 {
-                    products.ImageName = Guid.NewGuid().ToString() + Path.GetExtension(imageProduct.FileName);
-                    imageProduct.SaveAs(Server.MapPath("/Images/ProductImages/" + products.ImageName));
+                    product.ImageName = Guid.NewGuid().ToString() + Path.GetExtension(imageProduct.FileName);
+                    imageProduct.SaveAs(Server.MapPath("/Images/ProductImages/" + product.ImageName));
                     ImageResizer img = new ImageResizer();
-                    img.Resize(Server.MapPath("/Images/ProductImages/" + products.ImageName),
-                        Server.MapPath("/Images/ProductImages/Thumb/" + products.ImageName));
+                    img.Resize(Server.MapPath("/Images/ProductImages/" + product.ImageName),
+                        Server.MapPath("/Images/ProductImages/Thumb/" + product.ImageName));
                 }
-                products.CreateDate = DateTime.Now;
-                db.Products.Add(products);
+                product.CreateDate = DateTime.Now;
+                db.ProductRepository.Insert(product);
 
                 foreach (int selectedGroup in selectedGroups)
                 {
-                    db.Prodct_Selected_Groups.Add(new Prodct_Selected_Groups()
+                    db.Product_ProductGroupRepository.Insert(new Product_ProductGroup()
                     {
-                        ProductID = products.ProductID,
-                        GroupID = selectedGroup
+                        ProductId = product.ProductId,
+                        ProductGroupId = selectedGroup
                     });
                 }
 
