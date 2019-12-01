@@ -42,7 +42,7 @@
     <script>
 
         function create(id) {
-            $.get('/admin/productgroups/Create/' + id, function (res) {
+            $.get('/admin/ProductGroups/Create/' + id, function (res) {
                 $('#myModal').modal();
                 $('#myModalTitle').html('افزودن  گروه');
                 $('#myModalBody').html(res);

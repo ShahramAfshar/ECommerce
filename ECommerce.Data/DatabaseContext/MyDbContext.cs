@@ -16,5 +16,7 @@ namespace ECommerce.Data.DatabaseContext
         }
 
         public System.Data.Entity.DbSet<ECommerce.DomainModel.ProductGroup> ProductGroups { get; set; }
+
+        public System.Data.Entity.DbSet<ECommerce.DomainModel.Product> Products { get; set; }
     }
 }
