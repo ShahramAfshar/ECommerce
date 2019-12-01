@@ -39,6 +39,21 @@ namespace ECommerce.Data
         #endregion
 
         #region Repositories
+
+        private TagRepository tagRepository;
+        public TagRepository TagRepository
+        {
+            get
+            {
+                if (tagRepository == null)
+                {
+                    tagRepository = new TagRepository(db);
+                }
+
+                return tagRepository;
+            }
+        }
+
         private ProductRepository productRepository;
         public ProductRepository ProductRepository
         {
