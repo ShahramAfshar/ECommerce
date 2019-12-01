@@ -87,18 +87,18 @@ namespace ECommerce.Web.Areas.Admin.Controllers
                     string[] tag = tags.Split(',');
                     foreach (string t in tag)
                     {
-                        db.Product_Tags.Add(new Product_Tags()
+                        db.TagRepository.Insert(new Tag()
                         {
-                            ProductID = products.ProductID,
-                            Tag = t.Trim()
+                            ProductId = product.ProductId,
+                            Title = t.Trim()
                         });
                     }
                 }
-                db.SaveChanges();
+                db.Commit();
                 return RedirectToAction("Index");
             }
-            ViewBag.Groups = db.Product_Groups.ToList();
-            return View(products);
+            ViewBag.Groups = db.ProductGroupRepository.GetAll();
+            return View(product);
         }
 
         // GET: Admin/Products/Edit/5
@@ -108,11 +108,16 @@ namespace ECommerce.Web.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Products.Find(id);
+            Product product = db.ProductRepository.GetById(id.Value);
             if (product == null)
             {
                 return HttpNotFound();
             }
+
+            ViewBag.SelectedGroups = product.Product_ProductGroups.ToList();
+            ViewBag.Groups = db.ProductGroupRepository.GetAll();
+            ViewBag.Tags = string.Join(",", product.Tags.Select(t => t.Title).ToList());
+
             return View(product);
         }
 
@@ -121,14 +126,67 @@ namespace ECommerce.Web.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductId,ProductTitle,ShortDescription,Text,Price,CreateDate,ImageName,CountSale")] Product product)
+        public ActionResult Edit([Bind(Include = "ProductId,ProductTitle,ShortDescription,Text,Price,CreateDate,ImageName,CountSale")] Product product,
+             List<int> selectedGroups, HttpPostedFileBase imageProduct, string tags
+            )
         {
             if (ModelState.IsValid)
             {
-                db.Entry(product).State = EntityState.Modified;
-                db.SaveChanges();
+                if (imageProduct != null && imageProduct.IsImage())
+                {
+                    if (product.ImageName != "images.jpg")
+                    {
+                        System.IO.File.Delete(Server.MapPath("/Images/ProductImages/" + product.ImageName));
+                        System.IO.File.Delete(Server.MapPath("/Images/ProductImages/Thumb/" + product.ImageName));
+                    }
+
+                    product.ImageName = Guid.NewGuid().ToString() + Path.GetExtension(imageProduct.FileName);
+                    imageProduct.SaveAs(Server.MapPath("/Images/ProductImages/" + product.ImageName));
+                    ImageResizer img = new ImageResizer();
+                    img.Resize(Server.MapPath("/Images/ProductImages/" + product.ImageName),
+                        Server.MapPath("/Images/ProductImages/Thumb/" + product.ImageName));
+                }
+             //   db.Entry(products).State = EntityState.Modified;
+
+
+                db.TagRepository.GetMany(t => t.ProductId == product.ProductId).ToList().ForEach(t => db.TagRepository.Delete(t));
+
+
+                if (!string.IsNullOrEmpty(tags))
+                {
+                    string[] tag = tags.Split(',');
+                    foreach (string t in tag)
+                    {
+                        db.TagRepository.Insert(new Tag()
+                        {
+                            ProductId = product.ProductId,
+                            Title = t.Trim()
+                        });
+                    }
+                }
+
+
+                db.Product_ProductGroupRepository.GetMany(g => g.ProductId == product.ProductId).ToList().ForEach(g => db.Product_ProductGroupRepository.Delete(g));
+
+                if (selectedGroups != null && selectedGroups.Any())
+                {
+                    foreach (int selectedGroup in selectedGroups)
+                    {
+                        db.Product_ProductGroupRepository.Insert(new Product_ProductGroup()
+                        {
+                            ProductId = product.ProductId,
+                            ProductGroupId = selectedGroup
+                        });
+                    }
+                }
+
+                db.Commit();
                 return RedirectToAction("Index");
             }
+
+            ViewBag.SelectedGroups = selectedGroups;
+            ViewBag.Groups = db.ProductGroupRepository.GetAll();
+            ViewBag.Tags = tags;
             return View(product);
         }
 
@@ -139,7 +197,7 @@ namespace ECommerce.Web.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Products.Find(id);
+            Product product = db.ProductRepository.GetById(id.Value);
             if (product == null)
             {
                 return HttpNotFound();
@@ -152,9 +210,9 @@ namespace ECommerce.Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Product product = db.Products.Find(id);
-            db.Products.Remove(product);
-            db.SaveChanges();
+            Product product = db.ProductRepository.GetById(id);
+            db.ProductRepository.Delete(product);
+            db.Commit();
             return RedirectToAction("Index");
         }
 
