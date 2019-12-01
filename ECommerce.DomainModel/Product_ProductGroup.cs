@@ -17,5 +17,6 @@ namespace ECommerce.DomainModel
         public int ProductGroupId { get; set; }
 
         public virtual Product Product { get; set; }
+        public virtual ProductGroup  ProductGroup { get; set; }
     }
 }

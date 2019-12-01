@@ -28,6 +28,7 @@ namespace ECommerce.DomainModel
         [ForeignKey("ParentId")]
         public virtual ProductGroup  OneProductGroup { get; set; }
 
+        public virtual ICollection<Product_ProductGroup> Product_ProductGroups { get; set; }
 
 
     }
