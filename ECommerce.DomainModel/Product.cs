@@ -46,6 +46,8 @@ namespace ECommerce.DomainModel
 
         public virtual ICollection<Product_ProductGroup>  Product_ProductGroups { get; set; }
 
+        public virtual ICollection<Tag> Tags { get; set; }
+
 
     }
 }
