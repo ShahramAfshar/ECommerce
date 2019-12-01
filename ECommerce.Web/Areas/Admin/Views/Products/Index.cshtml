@@ -1,69 +1,71 @@
 ﻿@model IEnumerable<ECommerce.DomainModel.Product>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "لیست محصولات";
+    ViewBag.Title = "لیست محصولات";
 }
 
-<h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <a class="btn btn-primary" href="@Url.Action("Create")">افزودن محصول جدید</a>
 </p>
-<table class="table">
+<table class="table table-bordered">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ProductTitle)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ShortDescription)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Text)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreateDate)
-        </th>
         <th>
             @Html.DisplayNameFor(model => model.ImageName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CountSale)
+            @Html.DisplayNameFor(model => model.ProductTitle)
+        </th>
+        <th>
+            گروه های این محصول
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.CreateDate)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProductTitle)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ShortDescription)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Text)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreateDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ImageName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CountSale)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ProductId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ProductId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ProductId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <img class="thumbnail" src="/Images/ProductImages/Thumb/@item.ImageName" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductTitle)
+            </td>
+            <td>
+                @if (item.Product_ProductGroups.Any())
+                {
+                    <ol>
+                        @foreach (var group in item.Product_ProductGroups)
+                        {
+                            <li>
+                                @group.ProductGroup.Title
+                            </li>
+                        }
+                    </ol>
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+
+            <td>
+                @item.CreateDate.ToString("dddd, dd MMMM yyyy")
+            </td>
+            <td>
+                <a class="btn btn-default btn-xs" href="@Url.Action("ProductFeaturs",new {id=item.ProductId})">ویژگی های محصول</a>
+                <a class="btn btn-info btn-xs" href="@Url.Action("Gallery",new {id=item.ProductId})">گالری محصول</a>
+                <a class="btn btn-warning btn-xs" href="@Url.Action("Edit",new {id=item.ProductId})">ویرایش محصول</a>
+                <a class="btn btn-danger btn-xs" href="@Url.Action("Delete",new {id=item.ProductId})">حذف محصول</a>
+            </td>
+        </tr>
+    }
 
 </table>
