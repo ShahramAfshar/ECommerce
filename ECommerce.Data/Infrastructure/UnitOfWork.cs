@@ -54,6 +54,20 @@ namespace ECommerce.Data
             }
         }
 
+        private FeatureRepository featureRepository;
+        public FeatureRepository FeatureRepository
+        {
+            get
+            {
+                if (featureRepository == null)
+                {
+                    featureRepository = new FeatureRepository(db);
+                }
+
+                return featureRepository;
+            }
+        }
+
         private ProductRepository productRepository;
         public ProductRepository ProductRepository
         {
@@ -79,6 +93,20 @@ namespace ECommerce.Data
                 }
 
                 return productGroupRepository;
+            }
+        }
+
+        private Product_FeatureRepository product_FeatureRepository;
+        public Product_FeatureRepository Product_FeatureRepository
+        {
+            get
+            {
+                if (product_FeatureRepository == null)
+                {
+                    product_FeatureRepository = new Product_FeatureRepository(db);
+                }
+
+                return product_FeatureRepository;
             }
         }
 
