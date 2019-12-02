@@ -2,11 +2,11 @@
 @model ECommerce.DomainModel.Product
 
 @{
-    ViewBag.Title = "Create";
-    List<Product_ProductGroup> selectedGroup = ViewBag.SelectedGroups;
+    ViewBag.Title = "ویرایش محصول";
+    ViewBag.TitleSection = "ویرایش محصول";
+    IEnumerable<Product_ProductGroup> selectedGroup = ViewBag.SelectedGroups;
 }
 
-<h2>ویرایش محصول جدید</h2>
 <div class="row">
     @using (Html.BeginForm("Edit", "Products", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
@@ -25,10 +25,10 @@
             <div class="form-horizontal">
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.LabelFor(model => model.ProductTitle, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.ProductTitle, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ProductTitle, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
@@ -90,17 +90,17 @@
                 <div class="panel-heading">انتخاب گروه</div>
                 <div class="panel-body">
                     @{
-                        List<ProductGroup> productGroup = ViewBag.Groups;
+                        IEnumerable<ProductGroup> groups = ViewBag.Groups;
 
                         <ul>
-                            @foreach (var group in productGroup.Where(g => g.ParentId == null))
+                            @foreach (var group in groups.Where(g => g.ParentId == null))
                             {
                                 <li>
-                                    <input type="checkbox" @((selectedGroup.Any(g => g.ProductGroupId == group.ProductGroupId)) ? "checked" : "") name="selectedGroups" value="@group.ProductGroupId" /> <span>@group.ProductGroupId</span>
-                                    @if (productGroup.Any(g => g.ParentId == group.ProductGroupId))
+                                    <input type="checkbox" @((selectedGroup.Any(g => g.ProductGroupId == group.ProductGroupId)) ? "checked" : "") name="selectedGroups" value="@group.ProductGroupId" /> <span>@group.Title</span>
+                                    @if (groups.Any(g => g.ParentId == group.ProductGroupId))
                                     {
                                         <ul>
-                                            @foreach (var subGroup in productGroup.Where(g => g.ParentId == group.ProductGroupId))
+                                            @foreach (var subGroup in groups.Where(g => g.ParentId == group.ProductGroupId))
                                             {
                                                 <li>
                                                     <input type="checkbox" @((selectedGroup.Any(g => g.ProductGroupId == subGroup.ProductGroupId)) ? "checked" : "") name="selectedGroups" value="@subGroup.ProductGroupId" /> <span>@subGroup.Title</span>

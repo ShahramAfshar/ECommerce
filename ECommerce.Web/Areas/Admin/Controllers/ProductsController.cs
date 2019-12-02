@@ -146,7 +146,7 @@ namespace ECommerce.Web.Areas.Admin.Controllers
                     img.Resize(Server.MapPath("/Images/ProductImages/" + product.ImageName),
                         Server.MapPath("/Images/ProductImages/Thumb/" + product.ImageName));
                 }
-             //   db.Entry(products).State = EntityState.Modified;
+                db.ProductRepository.Update(product);
 
 
                 db.TagRepository.GetMany(t => t.ProductId == product.ProductId).ToList().ForEach(t => db.TagRepository.Delete(t));
