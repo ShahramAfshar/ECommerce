@@ -63,8 +63,10 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\FeatureRepository.cs" />
     <Compile Include="Repositories\ProductGroupRepository.cs" />
     <Compile Include="Repositories\ProductRepository.cs" />
+    <Compile Include="Repositories\Product_FeatureRepository.cs" />
     <Compile Include="Repositories\Product_ProductGroupRepository.cs" />
     <Compile Include="Repositories\TagRepository.cs" />
   </ItemGroup>
