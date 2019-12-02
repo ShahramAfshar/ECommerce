@@ -96,6 +96,20 @@ namespace ECommerce.Data
             }
         }
 
+        private ProductGaleryRepository productGaleryRepository;
+        public ProductGaleryRepository ProductGaleryRepository
+        {
+            get
+            {
+                if (productGaleryRepository == null)
+                {
+                    productGaleryRepository = new ProductGaleryRepository(db);
+                }
+
+                return productGaleryRepository;
+            }
+        }
+
         private Product_FeatureRepository product_FeatureRepository;
         public Product_FeatureRepository Product_FeatureRepository
         {
