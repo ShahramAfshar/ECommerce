@@ -216,6 +216,42 @@ namespace ECommerce.Web.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
+
+        #region  Featurs
+
+        public ActionResult ProductFeaturs(int id)
+        {
+
+            ViewBag.Features = db.Product_FeatureRepository.GetMany(f => f.ProductID == id).ToList();
+            ViewBag.FeatureID = new SelectList(db.FeatureRepository.GetAll(), "FeatureID", "FeatureTitle");
+            return View(new Product_Feature()
+            {
+                ProductID = id
+            });
+        }
+
+        [HttpPost]
+        public ActionResult ProductFeaturs(Product_Feature feature)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Product_FeatureRepository.Insert(feature);
+                db.Commit();
+            }
+
+            return RedirectToAction("ProductFeaturs", new { id = feature.ProductID });
+        }
+
+        public void DeleteFeature(int id)
+        {
+            var feature = db.Product_FeatureRepository.GetById(id);
+            db.Product_FeatureRepository.Delete(feature);
+            db.Commit();
+        }
+        #endregion
+
+
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

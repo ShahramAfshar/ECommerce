@@ -1445,6 +1445,7 @@
     <Content Include="Areas\Admin\Views\Features\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Features\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Features\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Products\ProductFeaturs.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
