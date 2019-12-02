@@ -85,7 +85,7 @@
                 <div class="panel-heading">انتخاب گروه</div>
                 <div class="panel-body">
                     @{
-                        List<ProductGroup> productGroup = ViewBag.Groups;
+                        IEnumerable<ProductGroup> productGroup = ViewBag.Groups;
 
                         <ul>
                             @foreach (var group in productGroup.Where(g => g.ParentId == null))
