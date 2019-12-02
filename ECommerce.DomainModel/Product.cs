@@ -28,6 +28,7 @@ namespace ECommerce.DomainModel
         public string Text { get; set; }
 
         [Display(Name = "قیمت")]
+        [DisplayFormat(DataFormatString = "{0:0,0}")]
         [Required(ErrorMessage = " فیلد{0} نمی تواند خالی باشد")]
         public int Price { get; set; }
 
