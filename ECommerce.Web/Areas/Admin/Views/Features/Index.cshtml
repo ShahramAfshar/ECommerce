@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<ECommerce.DomainModel.Feature>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "فهرست ویژگی ها";
+    ViewBag.TitleSection = "فهرست ویژگی ها";
 }
 
-<h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <a href="@Url.Action("Create")" class="btn btn-success">افزودن ویژگی جدید</a>
 </p>
 <table class="table">
     <tr>
@@ -17,17 +17,21 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.FeatureTitle)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.FeatureID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.FeatureID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.FeatureID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FeatureTitle)
+            </td>
+            <td>
+                <a href="@Url.Action("Edit",new {id=item.FeatureID})" class="btn btn-warning btn-sm">
+                    <i class="glyphicon glyphicon-edit"></i>
+                </a>
+                <a href="@Url.Action("Delete",new {id=item.FeatureID})" class="btn btn-danger btn-sm">
+                    <i class="glyphicon glyphicon-trash"></i>
+                </a>
+            </td>
+        </tr>
+    }
 
 </table>
