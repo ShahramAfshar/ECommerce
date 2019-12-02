@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ECommerce.DomainModel
 {
-   public class Features
+   public class Feature
     {
         [Key]
         public int FeatureID { get; set; }
