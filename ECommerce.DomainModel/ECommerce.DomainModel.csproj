@@ -65,6 +65,7 @@
   <ItemGroup>
     <Compile Include="Feature.cs" />
     <Compile Include="Product.cs" />
+    <Compile Include="ProductGalery.cs" />
     <Compile Include="ProductGroup.cs" />
     <Compile Include="Product_Feature.cs" />
     <Compile Include="Product_ProductGroup.cs" />
