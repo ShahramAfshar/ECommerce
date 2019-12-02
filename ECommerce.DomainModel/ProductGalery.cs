@@ -9,6 +9,7 @@ namespace ECommerce.DomainModel
 {
   public  class ProductGalery
     {
+        [Key]
         public int GalleryID { get; set; }
 
         [Display(Name = "کالا")]
