@@ -16,6 +16,6 @@ namespace ECommerce.DomainModel
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         public string FeatureTitle { get; set; }
 
-    //    public virtual ICollection<Product_Features> Product_Features { get; set; }
+        public virtual ICollection<Product_Feature> Product_Features { get; set; }
     }
 }
