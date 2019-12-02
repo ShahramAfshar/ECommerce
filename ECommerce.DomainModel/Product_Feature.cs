@@ -25,6 +25,6 @@ namespace ECommerce.DomainModel
         public string Value { get; set; }
 
      //   public virtual Features Features { get; set; }
-     //   public virtual Products Products { get; set; }
+       public virtual Product Products { get; set; }
     }
 }
