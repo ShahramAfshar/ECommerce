@@ -1,0 +1,32 @@
+﻿
+@using ECommerce.DomainModel;
+
+
+<h3 class="subtitle">دسته ها</h3>
+<div class="box-category">
+    <ul id="cat_accordion">
+
+        @{
+            IEnumerable<ProductGroup> productGroup = ViewBag.ProductGroup;
+
+            foreach (var group in productGroup.Where(g => g.ParentId == null))
+            {
+                <li>
+                    <a href="#">@group.Title </a> <span class="down"></span>
+                    @if (productGroup.Any(g => g.ParentId == group.ProductGroupId))
+                    {
+                        <ul>
+                            @foreach (var subGroup in productGroup.Where(g => g.ParentId == group.ProductGroupId))
+                            {
+                                <li><a href="#">@subGroup.Title</a></li>
+                            }
+                        </ul>
+                    }
+                </li>
+            }
+
+        }
+    </ul>
+</div>
+
+

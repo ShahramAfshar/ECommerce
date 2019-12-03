@@ -34,5 +34,11 @@ namespace ECommerce.Web.Controllers
 
             return View();
         }
+
+        public ActionResult Category()
+        {
+            ViewBag.ProductGroup = db.ProductGroupRepository.GetAll();
+            return PartialView("_PartialCategory");
+        }
     }
 }
