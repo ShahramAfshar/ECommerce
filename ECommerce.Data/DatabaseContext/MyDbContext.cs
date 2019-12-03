@@ -20,5 +20,7 @@ namespace ECommerce.Data.DatabaseContext
         public System.Data.Entity.DbSet<ECommerce.DomainModel.Product> Products { get; set; }
 
         public System.Data.Entity.DbSet<ECommerce.DomainModel.Feature> Features { get; set; }
+
+        public System.Data.Entity.DbSet<ECommerce.DomainModel.Slider> Sliders { get; set; }
     }
 }
