@@ -2205,6 +2205,7 @@
     <Content Include="Template\revolution\php\.DS_Store" />
     <Content Include="Template\revolution\php\twitter\.DS_Store" />
     <Content Include="Views\Shared\_LayoutMain.cshtml" />
+    <Content Include="Views\Home\_PartialSlider.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

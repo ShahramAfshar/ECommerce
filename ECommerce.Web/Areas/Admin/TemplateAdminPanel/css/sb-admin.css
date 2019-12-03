@@ -29,6 +29,11 @@ body {
     margin-top:15px;
 }
 
+.myImageStyle{
+    max-height:150px;
+    max-width:150px;
+}
+
 #page-wrapper {
     padding: 0 15px;
     min-height: 568px;
