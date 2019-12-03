@@ -2138,6 +2138,7 @@
     <Content Include="Template\revolution\info.cfg" />
     <Content Include="Template\revolution\php\.DS_Store" />
     <Content Include="Template\revolution\php\twitter\.DS_Store" />
+    <Content Include="Views\Shared\_LayoutMain.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
