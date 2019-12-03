@@ -12,10 +12,11 @@ namespace ECommerce.Data
     {
         //1-Begin TransAction  2-Commit(SaveChange) 3-RollBack
         TagRepository TagRepository { get; }
+        SliderRepository SliderRepository { get; }
         ProductRepository ProductRepository { get; }
         FeatureRepository FeatureRepository { get; }
         ProductGroupRepository ProductGroupRepository { get; }
-        ProductGaleryRepository  ProductGaleryRepository { get; }
+        ProductGaleryRepository ProductGaleryRepository { get; }
         Product_FeatureRepository Product_FeatureRepository { get; }
         Product_ProductGroupRepository Product_ProductGroupRepository { get; }
 

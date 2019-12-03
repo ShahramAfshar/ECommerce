@@ -54,6 +54,21 @@ namespace ECommerce.Data
             }
         }
 
+
+        private SliderRepository sliderRepository;
+        public SliderRepository SliderRepository
+        {
+            get
+            {
+                if (sliderRepository == null)
+                {
+                    sliderRepository = new SliderRepository(db);
+                }
+
+                return sliderRepository;
+            }
+        }
+
         private FeatureRepository featureRepository;
         public FeatureRepository FeatureRepository
         {
