@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,10 +21,12 @@ namespace ECommerce.DomainModel
         public string ImageName { get; set; }
 
         [Display(Name = "تاریخ شروع")]
+        [Column(TypeName = "datetime2")]
         [DisplayFormat(DataFormatString = "{0: yyyy/MM/dd}", ApplyFormatInEditMode = true)]
         public System.DateTime StartDate { get; set; }
 
         [Display(Name = "تاریخ پایان")]
+        [Column(TypeName = "datetime2")]
         [DisplayFormat(DataFormatString = "{0: yyyy/MM/dd}", ApplyFormatInEditMode = true)]
         public System.DateTime EndDate { get; set; }
 
