@@ -69,6 +69,10 @@
     <Compile Include="Migrations\201912020749452_initial7.Designer.cs">
       <DependentUpon>201912020749452_initial7.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912030725389_addSlider.cs" />
+    <Compile Include="Migrations\201912030725389_addSlider.Designer.cs">
+      <DependentUpon>201912030725389_addSlider.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\FeatureRepository.cs" />
@@ -102,6 +106,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912020749452_initial7.resx">
       <DependentUpon>201912020749452_initial7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912030725389_addSlider.resx">
+      <DependentUpon>201912030725389_addSlider.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
