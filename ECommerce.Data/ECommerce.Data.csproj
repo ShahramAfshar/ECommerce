@@ -53,30 +53,6 @@
     <Compile Include="Infrastructure\IUnitOFWork.cs" />
     <Compile Include="Infrastructure\Repository.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
-    <Compile Include="Migrations\201912010827354_initial.cs" />
-    <Compile Include="Migrations\201912010827354_initial.Designer.cs">
-      <DependentUpon>201912010827354_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201912020514213_initial5.cs" />
-    <Compile Include="Migrations\201912020514213_initial5.Designer.cs">
-      <DependentUpon>201912020514213_initial5.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201912020653258_initial6.cs" />
-    <Compile Include="Migrations\201912020653258_initial6.Designer.cs">
-      <DependentUpon>201912020653258_initial6.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201912020749452_initial7.cs" />
-    <Compile Include="Migrations\201912020749452_initial7.Designer.cs">
-      <DependentUpon>201912020749452_initial7.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201912030725389_addSlider.cs" />
-    <Compile Include="Migrations\201912030725389_addSlider.Designer.cs">
-      <DependentUpon>201912030725389_addSlider.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201912030732425_ad.cs" />
-    <Compile Include="Migrations\201912030732425_ad.Designer.cs">
-      <DependentUpon>201912030732425_ad.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\FeatureRepository.cs" />
@@ -92,26 +68,6 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201912010827354_initial.resx">
-      <DependentUpon>201912010827354_initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201912020514213_initial5.resx">
-      <DependentUpon>201912020514213_initial5.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201912020653258_initial6.resx">
-      <DependentUpon>201912020653258_initial6.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201912020749452_initial7.resx">
-      <DependentUpon>201912020749452_initial7.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201912030725389_addSlider.resx">
-      <DependentUpon>201912030725389_addSlider.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201912030732425_ad.resx">
-      <DependentUpon>201912030732425_ad.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ECommerce.DomainModel\ECommerce.DomainModel.csproj">

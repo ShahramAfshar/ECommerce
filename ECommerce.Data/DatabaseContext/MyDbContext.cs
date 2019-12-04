@@ -15,6 +15,12 @@ namespace ECommerce.Data.DatabaseContext
 
         }
 
+        static MyDbContext()
+        {
+            Database.SetInitializer(new
+               MigrateDatabaseToLatestVersion<MyDbContext, Migrations.Configuration>());
+        }
+
         public System.Data.Entity.DbSet<ECommerce.DomainModel.ProductGroup> ProductGroups { get; set; }
 
         public System.Data.Entity.DbSet<ECommerce.DomainModel.Product> Products { get; set; }

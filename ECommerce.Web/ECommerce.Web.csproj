@@ -192,14 +192,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201912010838443_initial.cs" />
-    <Compile Include="Migrations\201912010838443_initial.Designer.cs">
-      <DependentUpon>201912010838443_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201912030724300_addSlider.cs" />
-    <Compile Include="Migrations\201912030724300_addSlider.Designer.cs">
-      <DependentUpon>201912030724300_addSlider.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -1375,6 +1367,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\style.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -1513,6 +1506,7 @@
     <Content Include="Plugin\PersianDataPicker\css\fontawesome\scss\_stacked.scss" />
     <Content Include="Plugin\PersianDataPicker\css\fontawesome\scss\_variables.scss" />
     <Content Include="Plugin\PersianDataPicker\js\ajaxmin.bat" />
+    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -2211,7 +2205,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Areas\Admin\Views\Home\" />
     <Folder Include="Images\ProductImages\Thumb\" />
     <Folder Include="Images\Slider\" />
   </ItemGroup>
@@ -2237,14 +2230,6 @@
       <Project>{1896496e-6c88-446f-a42c-d16f3e363892}</Project>
       <Name>ECommerce.DomainModel</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201912010838443_initial.resx">
-      <DependentUpon>201912010838443_initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201912030724300_addSlider.resx">
-      <DependentUpon>201912030724300_addSlider.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

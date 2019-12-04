@@ -1,32 +1,36 @@
 ﻿@using Microsoft.AspNet.Identity
-<ul>
-    @if (Request.IsAuthenticated)
-    {
-
-        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    <ul>
+        @if (Request.IsAuthenticated)
         {
-            @Html.AntiForgeryToken()
 
-
-            <li>
-                @Html.ActionLink("خوش آمدید " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-            </li>
-            <li><a class="text-warning" href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
-            if (User.IsInRole("Admin"))
+            using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
             {
-                <li>
-                    @Html.ActionLink("پنل ادمین", "Index", "Home", new { Area = "Admin" })
-                </li>
+                @Html.AntiForgeryToken()
+
+                <li><a href="/Manage/Index"><i class="fa fa-user-plus"></i> <label> @User.Identity.GetUserName()خوش آمدید</label> </a></li>
+
+                <li><a href="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-user-plus"></i> <label>خروج</label></a></li>
+                if (User.IsInRole("Admin"))
+                {
+
+                    <li><a href="/Admin/Home"><i class="fa fa-user-plus"></i> <label> پنل ادمین</label> </a></li>
+
+                }
+
             }
 
+
+
         }
+        else
+        {
 
-    }
-    else
-    {
+            <li><a href="/Account/Register" id = "registerLink"><i class="fa fa-user-plus"></i> <label>عضویت</label> </a></li>
+            <li><a href="/Account/Login" id = "loginLink"><i class="fa fa-user"></i> <label>ورود به سایت</label> </a></li>
+        }
+        @*<li><a href="Account/Register"><i class="fa fa-user-plus"></i> <label>عضویت</label> </a></li>
+        <li><a href=""><i class="fa fa-user"></i> <label>ورود به سایت</label> </a></li>*@
+        <li><a href=""><i class="fa fa-shopping-bag"></i> سبد خرید <span>10</span></a></li>
 
-        <li>@Html.ActionLink("ثبت نام", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-        <li>@Html.ActionLink("ورود", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
 
-    }
-</ul>
+    </ul>

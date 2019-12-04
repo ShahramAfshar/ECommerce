@@ -25,6 +25,12 @@ namespace ECommerce.Web.Models
         {
         }
 
+
+        static ApplicationDbContext()
+        {
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, Migrations.Configuration>());
+        }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
