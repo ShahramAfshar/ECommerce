@@ -64,6 +64,87 @@
 /*===================================================================================*/
 /*  1. General Styles
 /*===================================================================================*/
+
+
+.top-nav {
+    border-bottom: 1px solid #dfdfdf;
+    background-color: #fff;
+    position: relative;
+}
+
+    .top-nav .container .right-nav {
+        padding-right: 0
+    }
+
+    .top-nav .container .left-nav {
+        padding-left: 0
+    }
+
+    .top-nav .clientarea ul li {
+        float: right;
+        padding: 0;
+        border-left: 1px solid #dfdfdf
+    }
+
+        .top-nav .clientarea ul li a {
+            padding: 0 15px;
+            display: block;
+            line-height: 35px
+        }
+
+            .top-nav .clientarea ul li a label {
+                margin: 0
+            }
+
+            .top-nav .clientarea ul li a i {
+                color: #008DDE;
+                font-size: 18px;
+                position: relative;
+                margin-left: 4px;
+                top: 2px
+            }
+
+            .top-nav .clientarea ul li a span {
+                color: #fff;
+                background-color: #008DDE;
+                margin-right: 6px;
+                width: 25px;
+                height: 25px;
+                border-radius: 100%;
+                -moz-border-radius: 100%;
+                -webkit-border-radius: 100%;
+                line-height: 23px;
+                text-align: center;
+                position: relative;
+                top: -1px
+            }
+
+        .top-nav .clientarea ul li:first-child {
+            border-right: 1px solid #dfdfdf;
+        }
+
+    .top-nav .socials ul li {
+        float: left;
+        border-right: 1px solid #dfdfdf
+    }
+
+        .top-nav .socials ul li:first-child {
+            border-left: 1px solid #dfdfdf;
+        }
+
+        .top-nav .socials ul li a {
+            display: block;
+            padding: 0 15px;
+            font-size: 20px;
+            line-height: 35px
+        }
+
+            .top-nav .socials ul li a .fa-facebook {
+                position: relative;
+                top: 2px
+            }
+
+
 html {
 	overflow: -moz-scrollbars-vertical;
 	margin:0;

@@ -29,23 +29,27 @@ namespace ECommerce.Web.Migrations
 
         public static void InitializeIdentityForEF(ApplicationDbContext context)
         {
-            if (!context.Roles.Any(r => r.Name == "AppAdmin"))
+            if (!context.Roles.Any(r => r.Name == "Admin"))
             {
                 var store = new RoleStore<IdentityRole>(context);
                 var manager = new RoleManager<IdentityRole>(store);
-                var role = new IdentityRole { Name = "AppAdmin" };
+                var role = new IdentityRole { Name = "Admin" };
 
                 manager.Create(role);
             }
 
-            if (!context.Users.Any(u => u.UserName == "founder"))
+            if (!context.Users.Any(u => u.UserName == "Admin"))
             {
                 var store = new UserStore<ApplicationUser>(context);
                 var manager = new UserManager<ApplicationUser>(store);
-                var user = new ApplicationUser { UserName = "founder" };
+                var user = new ApplicationUser {
+                    UserName = "Admin" ,
+                    Email="shahram.afshar69@gmail.com",
+                    EmailConfirmed=true
+                };
 
-                manager.Create(user, "ChangeItAsap!");
-                manager.AddToRole(user.Id, "AppAdmin");
+                manager.Create(user, "Shahram@1990");
+                manager.AddToRole(user.Id, "Admin");
             }
         }
     }
