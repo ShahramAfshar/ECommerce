@@ -1,13 +1,12 @@
 ﻿@model Microsoft.AspNet.Identity.EntityFramework.IdentityRole
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "جزئیات رول";
+    ViewBag.TitleSection = "جزئیات رول";
 }
 
-<h2>Details.</h2>
 
 <div>
-    <h4>Roles.</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -22,7 +21,7 @@
 @if (ViewBag.UserCount == 0)
 {
     <hr />
-    <p>No users found in this role.</p>
+    <p>هیچ کاربری این رول را ندارد</p>
 }
 
 <table class="table">
@@ -37,8 +36,8 @@
     }
 </table>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("ویرایش", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("برگشت به لیست", "Index")
 </p>
 
 

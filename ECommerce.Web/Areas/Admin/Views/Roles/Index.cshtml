@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<Microsoft.AspNet.Identity.EntityFramework.IdentityRole>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "فهرست نقش ها";
+    ViewBag.TitleSection = "فهرست نقش ها";
 }
 
-<h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("ایجاد نقش", "Create")
 </p>
 <table class="table">
     <tr>
@@ -26,9 +26,9 @@
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                @Html.ActionLink("ویرایش", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("جزئیات", "Details", new { id = item.Id }) |
+                @Html.ActionLink("حذف", "Delete", new { id = item.Id })
             </td>
         </tr>
     }
