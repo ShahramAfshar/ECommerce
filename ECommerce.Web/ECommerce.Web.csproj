@@ -1509,6 +1509,11 @@
     <Content Include="Plugin\PersianDataPicker\css\fontawesome\scss\_variables.scss" />
     <Content Include="Plugin\PersianDataPicker\js\ajaxmin.bat" />
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Users\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Users\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Users\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Users\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Users\Delete.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -2208,7 +2213,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Roles\" />
-    <Folder Include="Areas\Admin\Views\Users\" />
     <Folder Include="Images\ProductImages\Thumb\" />
     <Folder Include="Images\Slider\" />
   </ItemGroup>
