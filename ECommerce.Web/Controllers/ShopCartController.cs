@@ -1,4 +1,6 @@
 ﻿using ECommerce.Data;
+using ECommerce.Data.DatabaseContext;
+using ECommerce.DomainModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,11 +15,11 @@ namespace ECommerce.Web.Controllers
         // GET: ShopCart
         public ActionResult ShowCart()
         {
-            List<DataLayer.ViewModels.ShopCartItemViewModel> list = new List<DataLayer.ViewModels.ShopCartItemViewModel>();
+            List<ShopCartItemViewModel> list = new List<ShopCartItemViewModel>();
 
             if (Session["ShopCart"] != null)
             {
-                List<DataLayer.ViewModels.ShopCartItem> listShop = (List<DataLayer.ViewModels.ShopCartItem>)Session["ShopCart"];
+                List<ShopCartItem> listShop = (List<ShopCartItem>)Session["ShopCart"];
 
                 foreach (var item in listShop)
                 {
@@ -26,7 +28,7 @@ namespace ECommerce.Web.Controllers
                         p.ImageName,
                         p.Title
                     }).Single();
-                    list.Add(new DataLayer.ViewModels.ShopCartItemViewModel()
+                    list.Add(new ShopCartItemViewModel()
                     {
                         Count = item.Count,
                         ProductID = item.ProductID,
@@ -47,11 +49,11 @@ namespace ECommerce.Web.Controllers
 
         List<ShowOrderViewModel> getListOrder()
         {
-            List<DataLayer.ViewModels.ShowOrderViewModel> list = new List<DataLayer.ViewModels.ShowOrderViewModel>();
+            List<ShowOrderViewModel> list = new List<ShowOrderViewModel>();
 
             if (Session["ShopCart"] != null)
             {
-                List<DataLayer.ViewModels.ShopCartItem> listShop = Session["ShopCart"] as List<DataLayer.ViewModels.ShopCartItem>;
+                List<ShopCartItem> listShop = Session["ShopCart"] as List<ShopCartItem>;
 
                 foreach (var item in listShop)
                 {
@@ -61,7 +63,7 @@ namespace ECommerce.Web.Controllers
                         p.Title,
                         p.Price
                     }).Single();
-                    list.Add(new DataLayer.ViewModels.ShowOrderViewModel()
+                    list.Add(new ShowOrderViewModel()
                     {
                         Count = item.Count,
                         ProductID = item.ProductID,
@@ -82,7 +84,7 @@ namespace ECommerce.Web.Controllers
 
         public ActionResult CommandOrder(int id, int count)
         {
-            List<DataLayer.ViewModels.ShopCartItem> listShop = Session["ShopCart"] as List<DataLayer.ViewModels.ShopCartItem>;
+            List<ShopCartItem> listShop = Session["ShopCart"] as List<ShopCartItem>;
             int index = listShop.FindIndex(p => p.ProductID == id);
             if (count == 0)
             {
