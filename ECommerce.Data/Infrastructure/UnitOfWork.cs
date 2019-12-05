@@ -110,6 +110,20 @@ namespace ECommerce.Data
             }
         }
 
+        private OrderDetailRepository orderDetailRepository;
+        public OrderDetailRepository OrderDetailRepository
+        {
+            get
+            {
+                if (orderDetailRepository == null)
+                {
+                    orderDetailRepository = new OrderDetailRepository(db);
+                }
+
+                return orderDetailRepository;
+            }
+        }
+
         private ProductGroupRepository productGroupRepository;
         public ProductGroupRepository ProductGroupRepository
         {

@@ -16,6 +16,7 @@ namespace ECommerce.Data
         SliderRepository SliderRepository { get; }
         ProductRepository ProductRepository { get; }
         FeatureRepository FeatureRepository { get; }
+        OrderDetailRepository  OrderDetailRepository { get; }
         ProductGroupRepository ProductGroupRepository { get; }
         ProductGaleryRepository ProductGaleryRepository { get; }
         Product_FeatureRepository Product_FeatureRepository { get; }
