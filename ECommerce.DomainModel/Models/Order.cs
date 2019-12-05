@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ECommerce.Web.Models;
 
 namespace ECommerce.DomainModel
 {
@@ -14,6 +15,6 @@ namespace ECommerce.DomainModel
         public bool IsFinaly { get; set; }
 
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
-        //public virtual Users Users { get; set; }
+        public virtual ApplicationUser  ApplicationUser { get; set; }
     }
 }
