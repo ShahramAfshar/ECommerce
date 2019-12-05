@@ -14,7 +14,7 @@ namespace ECommerce.Data.Repositories
     public interface IProductRepository : IRepository<Product>
     {
         //------Definition Private Functions Model -------------//
-        //   IList<User> GetActiveUsers();
+
 
     }
 
@@ -26,6 +26,7 @@ namespace ECommerce.Data.Repositories
         {
             this.db = (this.db ?? (MyDbContext)db);
         }
+
 
         //public IList<User> GetActiveUsers()
         //{

@@ -12,122 +12,114 @@ namespace ECommerce.Web.Controllers
     public class ShopCartController : Controller
     {
         private readonly UnitOfWork<MyDbContext> db = new UnitOfWork<MyDbContext>();
-        // GET: ShopCart
-        //public ActionResult ShowCart()
-        //{
-        //    List<ShopCartItemViewModel> list = new List<ShopCartItemViewModel>();
+        
+        public ActionResult ShowCart()
+        {
+            List<ShopCartItemViewModel> list = new List<ShopCartItemViewModel>();
 
-        //    if (Session["ShopCart"] != null)
-        //    {
-        //        List<ShopCartItem> listShop = (List<ShopCartItem>)Session["ShopCart"];
+            if (Session["ShopCart"] != null)
+            {
+                List<ShopCartItem> listShop = (List<ShopCartItem>)Session["ShopCart"];
 
-        //        foreach (var item in listShop)
-        //        {
-        //            var product = db.Products.Where(p => p.ProductID == item.ProductID).Select(p => new
-        //            {
-        //                p.ImageName,
-        //                p.Title
-        //            }).Single();
-        //            list.Add(new ShopCartItemViewModel()
-        //            {
-        //                Count = item.Count,
-        //                ProductID = item.ProductID,
-        //                Title = product.Title,
-        //                ImageName = product.ImageName
+                foreach (var item in listShop)
+                {
 
-        //            });
-        //        }
-        //    }
+                    var product = db.ProductRepository.GetById(item.ProductID);
+                    list.Add(new ShopCartItemViewModel()
+                    {
+                        Count = item.Count,
+                        ProductID = item.ProductID,
+                        Title = product.ProductTitle,
+                        ImageName = product.ImageName
 
-        //    return PartialView(list);
-        //}
+                    });
+                }
+            }
 
-        //public ActionResult Index()
-        //{
-        //    return View();
-        //}
+            return PartialView(list);
+        }
 
-        //List<ShowOrderViewModel> getListOrder()
-        //{
-        //    List<ShowOrderViewModel> list = new List<ShowOrderViewModel>();
+        public ActionResult Index()
+        {
+            return View();
+        }
 
-        //    if (Session["ShopCart"] != null)
-        //    {
-        //        List<ShopCartItem> listShop = Session["ShopCart"] as List<ShopCartItem>;
+        List<ShowOrderViewModel> getListOrder()
+        {
+            List<ShowOrderViewModel> list = new List<ShowOrderViewModel>();
 
-        //        foreach (var item in listShop)
-        //        {
-        //            var product = db.Products.Where(p => p.ProductID == item.ProductID).Select(p => new
-        //            {
-        //                p.ImageName,
-        //                p.Title,
-        //                p.Price
-        //            }).Single();
-        //            list.Add(new ShowOrderViewModel()
-        //            {
-        //                Count = item.Count,
-        //                ProductID = item.ProductID,
-        //                Price = product.Price,
-        //                ImageName = product.ImageName,
-        //                Title = product.Title,
-        //                Sum = item.Count * product.Price
-        //            });
-        //        }
-        //    }
-        //    return list;
-        //}
+            if (Session["ShopCart"] != null)
+            {
+                List<ShopCartItem> listShop = Session["ShopCart"] as List<ShopCartItem>;
 
-        //public ActionResult Order()
-        //{
-        //    return PartialView(getListOrder());
-        //}
+                foreach (var item in listShop)
+                {
+                    var product = db.ProductRepository.GetById(item.ProductID);
+                    list.Add(new ShowOrderViewModel()
+                    {
+                        Count = item.Count,
+                        ProductID = item.ProductID,
+                        Price = product.Price,
+                        ImageName = product.ImageName,
+                        Title = product.ProductTitle,
+                        Sum = item.Count * product.Price
+                    });
+                }
+            }
+            return list;
+        }
 
-        //public ActionResult CommandOrder(int id, int count)
-        //{
-        //    List<ShopCartItem> listShop = Session["ShopCart"] as List<ShopCartItem>;
-        //    int index = listShop.FindIndex(p => p.ProductID == id);
-        //    if (count == 0)
-        //    {
-        //        listShop.RemoveAt(index);
-        //    }
-        //    else
-        //    {
-        //        listShop[index].Count = count;
-        //    }
-        //    Session["ShopCart"] = listShop;
+        public ActionResult Order()
+        {
+            return PartialView(getListOrder());
+        }
 
-        //    return PartialView("Order", getListOrder());
-        //}
+        public ActionResult CommandOrder(int id, int count)
+        {
+            List<ShopCartItem> listShop = Session["ShopCart"] as List<ShopCartItem>;
+            int index = listShop.FindIndex(p => p.ProductID == id);
+            if (count == 0)
+            {
+                listShop.RemoveAt(index);
+            }
+            else
+            {
+                listShop[index].Count = count;
+            }
+            Session["ShopCart"] = listShop;
 
-        //[Authorize]
-        //public ActionResult Payment()
-        //{
-        //    int userId = db.Users.Single(u => u.UserName == User.Identity.Name).UserID;
-        //    DataLayer.Orders order = new DataLayer.Orders()
-        //    {
-        //        UserID = userId,
-        //        Date = DateTime.Now,
-        //        IsFinaly = false,
-        //    };
-        //    db.Orders.Add(order);
+            return PartialView("Order", getListOrder());
+        }
 
-        //    var listDetails = getListOrder();
+        [Authorize]
+        public ActionResult Payment()
+        {
+            string userId = db.Users.Single(u => u.UserName == User.Identity.Name).UserID;
+            DataLayer.Orders order = new DataLayer.Orders()
+            {
+                UserID = userId,
+                Date = DateTime.Now,
+                IsFinaly = false,
+            };
+            db.Orders.Add(order);
 
-        //    foreach (var item in listDetails)
-        //    {
-        //        db.OrderDetails.Add(new DataLayer.OrderDetails()
-        //        {
-        //            Count = item.Count,
-        //            OrderID = order.OrderID,
-        //            Price = item.Price,
-        //            ProductID = item.ProductID,
-        //        });
-        //    }
-        //    db.SaveChanges();
+            var listDetails = getListOrder();
 
-        //    //TODO : Online Payment
+            foreach (var item in listDetails)
+            {
+                db.OrderDetails.Add(new DataLayer.OrderDetails()
+                {
+                    Count = item.Count,
+                    OrderID = order.OrderID,
+                    Price = item.Price,
+                    ProductID = item.ProductID,
+                });
+            }
+            db.SaveChanges();
 
-        //    return null;
-        //}
+            //TODO : Online Payment
+
+            return null;
+        }
     }
 }

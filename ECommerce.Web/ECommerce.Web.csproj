@@ -2218,6 +2218,9 @@
     <Content Include="Views\Shared\_LayoutMain.cshtml" />
     <Content Include="Views\Home\_PartialSlider.cshtml" />
     <Content Include="Views\Home\_PartialCategory.cshtml" />
+    <Content Include="Views\ShopCart\Index.cshtml" />
+    <Content Include="Views\ShopCart\Order.cshtml" />
+    <Content Include="Views\ShopCart\ShowCart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2225,7 +2228,6 @@
     <Folder Include="Areas\User\Models\" />
     <Folder Include="Images\ProductImages\Thumb\" />
     <Folder Include="Images\Slider\" />
-    <Folder Include="Views\ShopCart\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
