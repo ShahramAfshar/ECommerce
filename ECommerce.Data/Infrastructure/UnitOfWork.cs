@@ -54,6 +54,19 @@ namespace ECommerce.Data
             }
         }
 
+        private OrderRepository orderRepository;
+        public OrderRepository OrderRepository
+        {
+            get
+            {
+                if (orderRepository == null)
+                {
+                    orderRepository = new OrderRepository(db);
+                }
+
+                return orderRepository;
+            }
+        }
 
         private SliderRepository sliderRepository;
         public SliderRepository SliderRepository
