@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Microsoft.AspNet.Identity
+using Microsoft.AspNet.Identity;
 
 namespace ECommerce.Web.Controllers
 {
@@ -108,7 +108,7 @@ namespace ECommerce.Web.Controllers
 
             foreach (var item in listDetails)
             {
-                db.OrderDetails.Add(new DataLayer.OrderDetails()
+                db.OrderDetailRepository.Insert(new OrderDetail()
                 {
                     Count = item.Count,
                     OrderID = order.OrderID,
@@ -116,7 +116,7 @@ namespace ECommerce.Web.Controllers
                     ProductID = item.ProductID,
                 });
             }
-            db.SaveChanges();
+            db.Commit();
 
             //TODO : Online Payment
 
