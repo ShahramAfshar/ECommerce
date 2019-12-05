@@ -10,7 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using ECommerce.Web.Models;
 
-namespace ECommerce.Web.Controllers
+namespace ECommerce.Web.Areas.User.Controllers
 {
     [Authorize]
     public class AccountController : Controller

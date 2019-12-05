@@ -7,7 +7,7 @@
             {
                 @Html.AntiForgeryToken()
 
-                <li><a href="/Manage/Index"><i class="fa fa-user-plus"></i> <label> @User.Identity.GetUserName()خوش آمدید</label> </a></li>
+                <li><a href="/User/Manage/Index"><i class="fa fa-user-plus"></i> <label> @User.Identity.GetUserName()خوش آمدید</label> </a></li>
 
                 <li><a href="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-user-plus"></i> <label>خروج</label></a></li>
                 if (User.IsInRole("Admin"))
