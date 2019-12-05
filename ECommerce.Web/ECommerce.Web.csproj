@@ -188,9 +188,10 @@
     <Compile Include="Areas\Admin\Controllers\RolesController.cs" />
     <Compile Include="Areas\Admin\Controllers\SlidersController.cs" />
     <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Areas\User\UserAreaRegistration.cs" />
+    <Compile Include="Areas\User\Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Areas\User\Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1519,6 +1520,9 @@
     <Content Include="Areas\Admin\Views\Roles\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Roles\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Roles\Delete.cshtml" />
+    <Content Include="Areas\User\Views\web.config" />
+    <Content Include="Areas\User\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\User\Views\Shared\_LayoutUser.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -2127,24 +2131,24 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Account\ConfirmEmail.cshtml" />
-    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
-    <Content Include="Views\Account\ForgotPassword.cshtml" />
-    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Account\ResetPassword.cshtml" />
-    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\SendCode.cshtml" />
-    <Content Include="Views\Account\VerifyCode.cshtml" />
-    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
-    <Content Include="Views\Manage\ChangePassword.cshtml" />
-    <Content Include="Views\Manage\Index.cshtml" />
-    <Content Include="Views\Manage\ManageLogins.cshtml" />
-    <Content Include="Views\Manage\SetPassword.cshtml" />
-    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Areas\User\Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Areas\User\Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Areas\User\Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Areas\User\Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Areas\User\Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Areas\User\Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Areas\User\Views\Account\Login.cshtml" />
+    <Content Include="Areas\User\Views\Account\Register.cshtml" />
+    <Content Include="Areas\User\Views\Account\ResetPassword.cshtml" />
+    <Content Include="Areas\User\Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Areas\User\Views\Account\SendCode.cshtml" />
+    <Content Include="Areas\User\Views\Account\VerifyCode.cshtml" />
+    <Content Include="Areas\User\Views\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Areas\User\Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Areas\User\Views\Manage\Index.cshtml" />
+    <Content Include="Areas\User\Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Areas\User\Views\Manage\SetPassword.cshtml" />
+    <Content Include="Areas\User\Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Template\css\font-awesome\fonts\fontawesome-webfont.eot" />
@@ -2217,6 +2221,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\User\Models\" />
     <Folder Include="Images\ProductImages\Thumb\" />
     <Folder Include="Images\Slider\" />
   </ItemGroup>
