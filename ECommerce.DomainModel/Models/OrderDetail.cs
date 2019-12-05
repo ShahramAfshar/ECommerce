@@ -14,7 +14,7 @@ namespace ECommerce.DomainModel
         public int Price { get; set; }
         public int Count { get; set; }
 
-        public virtual Orders Orders { get; set; }
-        //public virtual Products Products { get; set; }
+        public virtual Order Order { get; set; }
+        public virtual Product Products { get; set; }
     }
 }

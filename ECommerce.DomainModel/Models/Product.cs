@@ -50,6 +50,7 @@ namespace ECommerce.DomainModel
         public virtual ICollection<Tag> Tags { get; set; }
         public virtual ICollection<Product_Feature>  Product_Features { get; set; }
         public virtual ICollection<ProductGalery> ProductGaleries{ get; set; }
+        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
 
 
     }
