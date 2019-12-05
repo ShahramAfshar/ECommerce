@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ECommerce.DomainModel.Models
+namespace ECommerce.DomainModel
 {
    public class Order
     {
@@ -13,7 +13,7 @@ namespace ECommerce.DomainModel.Models
         public System.DateTime Date { get; set; }
         public bool IsFinaly { get; set; }
 
-        //public virtual ICollection<OrderDetails> OrderDetails { get; set; }
+        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
         //public virtual Users Users { get; set; }
     }
 }
