@@ -102,7 +102,7 @@ namespace ECommerce.Web.Controllers
                 Date = DateTime.Now,
                 IsFinaly = false,
             };
-            db.Orders.Add(order);
+            db.OrderRepository.Insert(order);
 
             var listDetails = getListOrder();
 
