@@ -41,7 +41,7 @@
                             <ul>
                                 <li><a href="/shopcart/ShowCart"><i class="fa fa-shopping-bag"></i> سبد خرید <span id="countShopCart"></span></a></li>
                                 <li><a href=""><i class="fa fa fa-balance-scale"></i>  مقایسه <span>10</span></a></li>
-                                <li><a href=""><i class="fa fa-heart"></i>  علاقه مندی ها <span>10</span></a></li>
+                                <li><a href=""><i class="fa fa-heart"></i>  علاقه مندی ها <span id="countWish"></span></a></li>
                                 @*<li>
                                     <div id="showCart">
                                         @Html.Action("ShowCart", "ShopCart", new { area = "" })
@@ -605,6 +605,7 @@
     <script>
         $(function () {
             countShopCart();
+            countwish();
         });
 
     function countShopCart() {
@@ -612,6 +613,12 @@
             $.get("/Shopcart/Get", function (res) {
 
                 $("#countShopCart").html(res);
+            });
+    }
+      function countwish() {
+            $.get("/wish/Get", function (res) {
+
+                $("#countWish").html(res);
             });
             }
 
@@ -621,6 +628,12 @@
                     debugger;
                 $("#countShopCart").html(res);
                 updateShopCart();
+            });
+    }
+        function AddToWish(id) {
+        debugger;
+                $.get("/wish/AddToWish/" + id, function (res) {
+                $("#countWish").html(res);
             });
         }
 

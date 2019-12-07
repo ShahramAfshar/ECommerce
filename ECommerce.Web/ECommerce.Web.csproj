@@ -194,6 +194,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\ShopCartController.cs" />
+    <Compile Include="Controllers\WishController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -2234,6 +2235,7 @@
     <Folder Include="Areas\User\Models\" />
     <Folder Include="Images\ProductImages\Thumb\" />
     <Folder Include="Images\Slider\" />
+    <Folder Include="Views\Wish\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
