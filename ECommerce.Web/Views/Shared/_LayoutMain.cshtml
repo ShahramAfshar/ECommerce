@@ -39,7 +39,7 @@
                         <!-- Social -->
                         <div class="socials">
                             <ul>
-                                <li><a href=""><i class="fa fa-shopping-bag"></i> سبد خرید <span id="countShopCart"></span></a></li>
+                                <li><a href="/shopcart/ShowCart"><i class="fa fa-shopping-bag"></i> سبد خرید <span id="countShopCart"></span></a></li>
                                 <li><a href=""><i class="fa fa fa-balance-scale"></i>  مقایسه <span>10</span></a></li>
                                 <li><a href=""><i class="fa fa-heart"></i>  علاقه مندی ها <span>10</span></a></li>
                                 @*<li>
@@ -609,7 +609,7 @@
 
     function countShopCart() {
         debugger;
-            $.get("/Shop/Get", function (res) {
+            $.get("/Shopcart/Get", function (res) {
 
                 $("#countShopCart").html(res);
             });
@@ -617,7 +617,7 @@
 
     function AddToCart(id) {
         debugger;
-                $.get("/Shop/AddToBasket/" + id, function (res) {
+                $.get("/Shopcart/AddToBasket/" + id, function (res) {
                     debugger;
                 $("#countShopCart").html(res);
                 updateShopCart();

@@ -1,23 +1,53 @@
 ﻿@model IEnumerable<ECommerce.DomainModel.ShopCartItemViewModel>
 
+@{
+    ViewBag.Title = "سبد خرید";
+}
+
+
 @if (Model.Any())
 {
-    <section class="border-radius basket-side">
-        <header><h3> سبد خرید شما  </h3></header>
-        <article>
-            <ul>
-                @foreach (var item in Model)
-                {
-                    <li>
-                        <img class="border-radius" src="~/Images/ProductImages/Thumb/@item.ImageName">
-                        <div class="left-basket">
-                            <a href="">@item.Title <span class="border-radius"> @item.Count </span></a>
-                        </div>
-                    </li>
-                }
 
-            </ul>
-            <a href="/ShopCart" class="show-basket-button border-radius">مشاهده سبد خرید</a>
-        </article>
-    </section>
+
+
+
+<div class="row">
+    <!--Middle Part Start-->
+    <div id="content" class="col-sm-12">
+        <h1 class="title">سبد خرید شما</h1>
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <td class="text-center">تصویر</td>
+                        <td class="text-left">نام محصول</td>
+                        <td class="text-left">تعداد</td>
+                        <td class="text-right">عملیات</td>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="text-center"><a href="product.html"><img src="/Images/ProductImages/Thumb/@item.ImageName" alt="@item.Title" title="@item.Title"></a></td>
+                            <td class="text-left"><a href="product.html">@item.Title</a></td>
+                            <td class="text-left">@item.Count</td>
+                            <td>
+                                <a class="btn btn-danger" title="" data-toggle="tooltip" href="http://localhost/2.2.0.0-compiled/index.php?route=account/wishlist&amp;remove=48" data-original-title="حذف"><i class="fa fa-times"></i></a>
+                            </td>
+                        </tr>
+                    }
+
+
+
+
+
+                </tbody>
+            </table>
+            <a href="/ShopCart" class="btn btn-primary">نهایی کردن خرید</a>
+        </div>
+    </div>
+    <!--Middle Part End -->
+</div>
 }
