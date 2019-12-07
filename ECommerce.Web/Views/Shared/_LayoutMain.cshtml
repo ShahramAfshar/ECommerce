@@ -41,7 +41,7 @@
                             <ul>
                                 <li><a href="/shopcart/ShowCart"><i class="fa fa-shopping-bag"></i> سبد خرید <span id="countShopCart"></span></a></li>
                                 <li><a href=""><i class="fa fa fa-balance-scale"></i>  مقایسه <span>10</span></a></li>
-                                <li><a href=""><i class="fa fa-heart"></i>  علاقه مندی ها <span id="countWish"></span></a></li>
+                                <li><a href="/wish/ShowWish"><i class="fa fa-heart"></i>  علاقه مندی ها <span id="countWish"></span></a></li>
                                 @*<li>
                                     <div id="showCart">
                                         @Html.Action("ShowCart", "ShopCart", new { area = "" })
@@ -640,7 +640,10 @@
         function updateShopCart()
         {
             $("#showCart").load("/ShopCart/ShowCart").fadeOut(800).fadeIn(800);
-        }
+            }
+    function deleteWish(id) {
+
+    }
 
     </script>
 

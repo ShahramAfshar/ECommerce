@@ -1,4 +1,6 @@
-﻿using ECommerce.DomainModel;
+﻿using ECommerce.Data;
+using ECommerce.Data.DatabaseContext;
+using ECommerce.DomainModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,8 +11,7 @@ namespace ECommerce.Web.Controllers
 {
     public class WishController : Controller
     {
-        // GET: Wish
-        // GET: Shop
+        private readonly UnitOfWork<MyDbContext> db = new UnitOfWork<MyDbContext>();
         public int Get()
         {
             List<ShopCartItem> list = new List<ShopCartItem>();
@@ -48,6 +49,45 @@ namespace ECommerce.Web.Controllers
 
             Session["Wish"] = list;
             return Get();
+        }
+
+        public ActionResult DeleteWish (int id)
+        {
+
+           List<ShopCartItem> listShop = (List<ShopCartItem>)Session["Wish"];
+
+            int index = listShop.FindIndex(p => p.ProductID == id);
+
+             listShop.RemoveAt(index);
+            Session["Wish"] = listShop;
+
+            return RedirectToAction("ShowWish");
+        }
+
+        public ActionResult ShowWish()
+        {
+            List<ShopCartItemViewModel> list = new List<ShopCartItemViewModel>();
+
+            if (Session["Wish"] != null)
+            {
+                List<ShopCartItem> listShop = (List<ShopCartItem>)Session["Wish"];
+
+                foreach (var item in listShop)
+                {
+
+                    var product = db.ProductRepository.GetById(item.ProductID);
+                    list.Add(new ShopCartItemViewModel()
+                    {
+                        Count = item.Count,
+                        ProductID = item.ProductID,
+                        Title = product.ProductTitle,
+                        ImageName = product.ImageName
+
+                    });
+                }
+            }
+
+            return View(list);
         }
     }
 }

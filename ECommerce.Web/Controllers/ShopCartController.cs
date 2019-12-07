@@ -163,5 +163,18 @@ namespace ECommerce.Web.Controllers
 
             return null;
         }
+
+        public ActionResult DeleteShopCart(int id)
+        {
+
+            List<ShopCartItem> listShop = (List<ShopCartItem>)Session["ShopCart"];
+
+            int index = listShop.FindIndex(p => p.ProductID == id);
+
+            listShop.RemoveAt(index);
+            Session["ShopCart"] = listShop;
+
+            return RedirectToAction("ShowCart");
+        }
     }
 }
