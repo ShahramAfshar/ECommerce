@@ -14,7 +14,7 @@ namespace ECommerce.Data.Repositories
     public interface IProduct_ProductGroupRepository : IRepository<Product_ProductGroup>
     {
         //------Definition Private Functions Model -------------//
-        //   IList<User> GetActiveUsers();
+         IEnumerable<Product> GetProduct(int productGroupId);
 
     }
 
@@ -25,6 +25,15 @@ namespace ECommerce.Data.Repositories
         public Product_ProductGroupRepository(DbContext dbContext) : base(dbContext)
         {
             this.db = (this.db ?? (MyDbContext)db);
+        }
+
+        public IEnumerable<Product> GetProduct(int productGroupId)
+        {
+            List<Product> list = new List<Product>();
+
+             list.AddRange(GetAll().Where(pg=>pg.ProductGroupId==productGroupId).Select(g=>g.Product).ToList());
+
+            return list;
         }
 
         //public IList<User> GetActiveUsers()

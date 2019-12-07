@@ -14,7 +14,9 @@ namespace ECommerce.Data.Repositories
     public interface IProductRepository : IRepository<Product>
     {
         //------Definition Private Functions Model -------------//
-
+         IList<Product> GetMaxSale(int skip,int take);
+         IList<Product> GetLastAdd(int skip,int take);
+         IEnumerable<Product> GetSameGroup(int productId);
 
     }
 
@@ -27,14 +29,28 @@ namespace ECommerce.Data.Repositories
             this.db = (this.db ?? (MyDbContext)db);
         }
 
+        public IList<Product> GetMaxSale(int skip, int take)
+        {
+            var products = GetAll().OrderByDescending(p => p.CountSale).Skip(skip).Take(take).ToList();
 
-        //public IList<User> GetActiveUsers()
-        //{
-        //    var users = GetAll().Where(u => u.IsActive)
-        //        .ToList();
-        //    return users;
-        //}
+            return products;
+        }
 
+        public IList<Product> GetLastAdd(int skip, int take)
+        {
+            var products = GetAll().OrderByDescending(p => p.CreateDate).Skip(skip).Take(take).ToList();
+
+            return products;
+        }
+
+        public IEnumerable<Product> GetSameGroup(int producGrouptId)
+        {
+
+
+         //   var products = GetAll().Where(p => p.ProductId==productId).ToList();
+
+            return null;
+        }
 
 
     }

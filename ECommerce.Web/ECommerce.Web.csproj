@@ -192,6 +192,7 @@
     <Compile Include="Areas\User\UserAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\ShopCartController.cs" />
     <Compile Include="Controllers\ShopController.cs" />
     <Compile Include="Global.asax.cs">
@@ -2221,6 +2222,12 @@
     <Content Include="Views\ShopCart\Index.cshtml" />
     <Content Include="Views\ShopCart\Order.cshtml" />
     <Content Include="Views\ShopCart\ShowCart.cshtml" />
+    <Content Include="Views\Products\GetMaxSale.cshtml" />
+    <Content Include="Views\Products\GetLastAdd.cshtml" />
+    <Content Include="Views\Products\GetMaxSaleForIndex.cshtml" />
+    <Content Include="Views\Products\GetLastAddForIndex.cshtml" />
+    <Content Include="Views\Products\ProductWithCategory.cshtml" />
+    <Content Include="Views\Products\GetProduct.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2228,6 +2235,7 @@
     <Folder Include="Areas\User\Models\" />
     <Folder Include="Images\ProductImages\Thumb\" />
     <Folder Include="Images\Slider\" />
+    <Folder Include="Views\Shop\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

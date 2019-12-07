@@ -1,25 +1,25 @@
 ﻿<!DOCTYPE html>
 <html dir="rtl">
 <head>
-<meta charset="UTF-8" />
-<meta name="format-detection" content="telephone=no" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<link href="/Template/image/favicon.png" rel="icon" />
-<title>@ViewBag.Title</title>
-<meta name="description" content="Responsive and clean html template design for any kind of ecommerce webshop">
-<!-- CSS Part Start-->
-<link rel="stylesheet" type="text/css" href="/Template/js/bootstrap/css/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css" href="/Template/js/bootstrap/css/bootstrap-rtl.min.css" />
-<link rel="stylesheet" type="text/css" href="/Template/css/font-awesome/css/font-awesome.min.css" />
-<link rel="stylesheet" type="text/css" href="/Template/css/stylesheet.css" />
-<link rel="stylesheet" type="text/css" href="/Template/css/owl.carousel.css" />
-<link rel="stylesheet" type="text/css" href="/Template/css/owl.transitions.css" />
-<link rel="stylesheet" type="text/css" href="/Template/css/responsive.css" />
-<link rel="stylesheet" type="text/css" href="/Template/css/stylesheet-rtl.css" />
-<link rel="stylesheet" type="text/css" href="/Template/css/responsive-rtl.css" />
+    <meta charset="UTF-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="/Template/image/favicon.png" rel="icon" />
+    <title>@ViewBag.Title</title>
+    <meta name="description" content="Responsive and clean html template design for any kind of ecommerce webshop">
+    <!-- CSS Part Start-->
+    <link rel="stylesheet" type="text/css" href="/Template/js/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/Template/js/bootstrap/css/bootstrap-rtl.min.css" />
+    <link rel="stylesheet" type="text/css" href="/Template/css/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="/Template/css/stylesheet.css" />
+    <link rel="stylesheet" type="text/css" href="/Template/css/owl.carousel.css" />
+    <link rel="stylesheet" type="text/css" href="/Template/css/owl.transitions.css" />
+    <link rel="stylesheet" type="text/css" href="/Template/css/responsive.css" />
+    <link rel="stylesheet" type="text/css" href="/Template/css/stylesheet-rtl.css" />
+    <link rel="stylesheet" type="text/css" href="/Template/css/responsive-rtl.css" />
 
 
-<!-- CSS Part End-->
+    <!-- CSS Part End-->
 </head>
 <body>
     <div class="wrapper-wide">
@@ -39,9 +39,14 @@
                         <!-- Social -->
                         <div class="socials">
                             <ul>
-                                <li><a href=""><i class="fa fa-shopping-bag"></i> سبد خرید <span>10</span></a></li>
+                                <li><a href=""><i class="fa fa-shopping-bag"></i> سبد خرید <span id="countShopCart"></span></a></li>
                                 <li><a href=""><i class="fa fa fa-balance-scale"></i>  مقایسه <span>10</span></a></li>
                                 <li><a href=""><i class="fa fa-heart"></i>  علاقه مندی ها <span>10</span></a></li>
+                                @*<li>
+                                    <div id="showCart">
+                                        @Html.Action("ShowCart", "ShopCart", new { area = "" })
+                                    </div>
+                                </li>*@
                             </ul>
                         </div>
                         <!-- End Social -->
@@ -484,93 +489,12 @@
                         @Html.Action("Category", "Home")
 
                         <h3 class="subtitle">پرفروش ها</h3>
-                        <div class="side-item">
-                            <div class="product-thumb clearfix">
-                                <div class="image"><a href="product.html"><img src="/Template/image/product/apple_cinema_30-50x50.jpg" alt="تی شرت کتان مردانه" title="تی شرت کتان مردانه" class="img-responsive" /></a></div>
-                                <div class="caption">
-                                    <h4><a href="product.html">تی شرت کتان مردانه</a></h4>
-                                    <p class="price"><span class="price-new">110000 تومان</span> <span class="price-old">122000 تومان</span> <span class="saving">-10%</span></p>
-                                </div>
-                            </div>
-                            <div class="product-thumb clearfix">
-                                <div class="image"><a href="product.html"><img src="/Template/image/product/iphone_1-50x50.jpg" alt="آیفون 7" title="آیفون 7" class="img-responsive" /></a></div>
-                                <div class="caption">
-                                    <h4><a href="product.html">آیفون 7</a></h4>
-                                    <p class="price"> 2200000 تومان </p>
-                                    <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span></div>
-                                </div>
-                            </div>
-                            <div class="product-thumb clearfix">
-                                <div class="image"><a href="product.html"><img src="/Template/image/product/macbook_1-50x50.jpg" alt="آیدیا پد یوگا" title="آیدیا پد یوگا" class="img-responsive" /></a></div>
-                                <div class="caption">
-                                    <h4><a href="product.html">آیدیا پد یوگا</a></h4>
-                                    <p class="price"> 900000 تومان </p>
-                                    <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> </div>
-                                </div>
-                            </div>
-                            <div class="product-thumb clearfix">
-                                <div class="image"><a href="product.html"><img src="/Template/image/product/sony_vaio_1-50x50.jpg" alt="کفش راحتی مردانه" title="کفش راحتی مردانه" class="img-responsive" /></a></div>
-                                <div class="caption">
-                                    <h4><a href="product.html">کفش راحتی مردانه</a></h4>
-                                    <p class="price"> <span class="price-new">32000 تومان</span> <span class="price-old">12 میلیون تومان</span> <span class="saving">-25%</span> </p>
-                                    <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> </div>
-                                </div>
-                            </div>
-                            <div class="product-thumb clearfix">
-                                <div class="image"><a href="product.html"><img src="/Template/image/product/FinePix-Long-Zoom-Camera-50x50.jpg" alt="دوربین فاین پیکس" title="دوربین فاین پیکس" class="img-responsive" /></a></div>
-                                <div class="caption">
-                                    <h4><a href="product.html">دوربین فاین پیکس</a></h4>
-                                    <p class="price">122000 تومان</p>
-                                </div>
-                            </div>
-                        </div>
-                        <h3 class="subtitle">ویژه</h3>
-                        <div class="side-item">
-                            <div class="product-thumb clearfix">
-                                <div class="image"><a href="product.html"><img src="/Template/image/product/macbook_pro_1-50x50.jpg" alt=" کتاب آموزش باغبانی " title=" کتاب آموزش باغبانی " class="img-responsive" /></a></div>
-                                <div class="caption">
-                                    <h4><a href="product.html">کتاب آموزش باغبانی</a></h4>
-                                    <p class="price"> <span class="price-new">98000 تومان</span> <span class="price-old">120000 تومان</span> <span class="saving">-26%</span> </p>
-                                </div>
-                            </div>
-                            <div class="product-thumb clearfix">
-                                <div class="image"><a href="product.html"><img src="/Template/image/product/samsung_tab_1-50x50.jpg" alt="تبلت ایسر" title="تبلت ایسر" class="img-responsive" /></a></div>
-                                <div class="caption">
-                                    <h4><a href="product.html">تبلت ایسر</a></h4>
-                                    <p class="price"> <span class="price-new">98000 تومان</span> <span class="price-old">240000 تومان</span> <span class="saving">-5%</span> </p>
-                                    <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> </div>
-                                </div>
-                            </div>
-                            <div class="product-thumb clearfix">
-                                <div class="image"><a href="product.html"><img src="/Template/image/product/apple_cinema_30-50x50.jpg" alt="تی شرت کتان مردانه" title="تی شرت کتان مردانه" class="img-responsive" /></a></div>
-                                <div class="caption">
-                                    <h4><a href="http://demo.harnishdesign.net/opencart/marketshop/v1/index.php?route=product/product&amp;product_id=42">تی شرت کتان مردانه</a></h4>
-                                    <p class="price"> <span class="price-new">110000 تومان</span> <span class="price-old">122000 تومان</span> <span class="saving">-10%</span> </p>
-                                </div>
-                            </div>
-                            <div class="product-thumb clearfix">
-                                <div class="image"><a href="product.html"><img src="/Template/image/product/nikon_d300_1-50x50.jpg" alt="دوربین دیجیتال حرفه ای" title="دوربین دیجیتال حرفه ای" class="img-responsive" /></a></div>
-                                <div class="caption">
-                                    <h4><a href="product.html">دوربین دیجیتال حرفه ای</a></h4>
-                                    <p class="price"> <span class="price-new">92000 تومان</span> <span class="price-old">98000 تومان</span> <span class="saving">-6%</span> </p>
-                                </div>
-                            </div>
-                            <div class="product-thumb clearfix">
-                                <div class="image"><a href="product.html"><img src="/Template/image/product/nikon_d300_5-50x50.jpg" alt="محصولات مراقبت از مو" title="محصولات مراقبت از مو" class="img-responsive" /></a></div>
-                                <div class="caption">
-                                    <h4><a href="product.html">محصولات مراقبت از مو</a></h4>
-                                    <p class="price"> <span class="price-new">66000 تومان</span> <span class="price-old">90000 تومان</span> <span class="saving">-27%</span> </p>
-                                    <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> </div>
-                                </div>
-                            </div>
-                            <div class="product-thumb clearfix">
-                                <div class="image"><a href="product.html"><img src="/Template/image/product/macbook_air_1-50x50.jpg" alt="لپ تاپ ایلین ور" title="لپ تاپ ایلین ور" class="img-responsive" /></a></div>
-                                <div class="caption">
-                                    <h4><a href="product.html">لپ تاپ ایلین ور</a></h4>
-                                    <p class="price"> <span class="price-new">10 میلیون تومان</span> <span class="price-old">12 میلیون تومان</span> <span class="saving">-5%</span> </p>
-                                </div>
-                            </div>
-                        </div>
+                        @Html.Action("GetMaxSale", "Products")
+
+                        <h3 class="subtitle">جدیدترین ها</h3>
+                        @Html.Action("GetLastAdd", "Products")
+
+
                         <div class="list-group">
                             <h3 class="subtitle">محتوای سفارشی</h3>
                             <p>این یک بلاک محتواست. هر نوع محتوایی شامل html، نوشته یا تصویر را میتوانید در آن قرار دهید. </p>
@@ -581,66 +505,13 @@
                             <div class="item"> <a href="#"><img src="/Template/image/banner/small-banner1-265x350.jpg" alt="small banner" class="img-responsive" /></a> </div>
                             <div class="item"> <a href="#"><img src="/Template/image/banner/small-banner-265x350.jpg" alt="small banner1" class="img-responsive" /></a> </div>
                         </div>
-                        <h3 class="subtitle">جدیدترین</h3>
-                        <div class="side-item">
-                            <div class="product-thumb clearfix">
-                                <div class="image"><a href="product.html"><img src="/Template/image/product/iphone_6-50x50.jpg" alt="کرم مو آقایان" title="کرم مو آقایان" class="img-responsive" /></a></div>
-                                <div class="caption">
-                                    <h4><a href="product.html">کرم مو آقایان</a></h4>
-                                    <p class="price"> 42300 تومان </p>
-                                    <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> </div>
-                                </div>
-                            </div>
-                            <div class="product-thumb clearfix">
-                                <div class="image"><a href="product.html"><img src="/Template/image/product/nikon_d300_5-50x50.jpg" alt="محصولات مراقبت از مو" title="محصولات مراقبت از مو" class="img-responsive" /></a></div>
-                                <div class="caption">
-                                    <h4><a href="product.html">محصولات مراقبت از مو</a></h4>
-                                    <p class="price"> <span class="price-new">66000 تومان</span> <span class="price-old">90000 تومان</span> <span class="saving">-27%</span> </p>
-                                    <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> </div>
-                                </div>
-                            </div>
-                            <div class="product-thumb clearfix">
-                                <div class="image"><a href="product.html"><img src="/Template/image/product/nikon_d300_4-50x50.jpg" alt="کرم لخت کننده مو" title="کرم لخت کننده مو" class="img-responsive" /></a></div>
-                                <div class="caption">
-                                    <h4><a href="product.html">کرم لخت کننده مو</a></h4>
-                                    <p class="price"> 88000 تومان </p>
-                                </div>
-                            </div>
-                            <div class="product-thumb clearfix">
-                                <div class="image"><a href="product.html"><img src="/Template/image/product/macbook_5-50x50.jpg" alt="ژل حمام بانوان" title="ژل حمام بانوان" class="img-responsive" /></a></div>
-                                <div class="caption">
-                                    <h4><a href="product.html">ژل حمام بانوان</a></h4>
-                                    <p class="price"> <span class="price-new">19500 تومان</span> <span class="price-old">21900 تومان</span> <span class="saving">-4%</span> </p>
-                                </div>
-                            </div>
-                            <div class="product-thumb clearfix">
-                                <div class="image"><a href="product.html"><img src="/Template/image/product/macbook_4-50x50.jpg" alt="عطر گوچی" title="عطر گوچی" class="img-responsive" /></a></div>
-                                <div class="caption">
-                                    <h4><a href="product.html">عطر گوچی</a></h4>
-                                    <p class="price"> 85000 تومان </p>
-                                    <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> </div>
-                                </div>
-                            </div>
-                            <div class="product-thumb clearfix">
-                                <div class="image"><a href="product.html"><img src="/Template/image/product/macbook_3-50x50.jpg" alt="رژ لب گارنیر" title="رژ لب گارنیر" class="img-responsive" /></a></div>
-                                <div class="caption">
-                                    <h4><a href="product.html">رژ لب گارنیر</a></h4>
-                                    <p class="price"> 123000 تومان </p>
-                                </div>
-                            </div>
-                            <div class="product-thumb clearfix">
-                                <div class="image"><a href="product.html"><img src="/Template/image/product/macbook_2-50x50.jpg" alt="عطر نینا ریچی" title="عطر نینا ریچی" class="img-responsive" /></a></div>
-                                <div class="caption">
-                                    <h4><a href="product.html">عطر نینا ریچی</a></h4>
-                                    <p class="price"> 110000 تومان </p>
-                                </div>
-                            </div>
-                        </div>
                     </aside>
                     <!-- Left Part End-->
                     <!--Middle Part Start-->
                     <div id="content" class="col-sm-9">
                         @RenderSection("Slider", false)
+
+
 
                         @RenderBody()
                     </div>
@@ -719,7 +590,6 @@
         </footer>
         <!--Footer End-->
         <!-- Facebook Side Block Start -->
-       
         <!-- Custom Side Block End -->
     </div>
     <!-- JS Part Start-->
@@ -732,7 +602,34 @@
     <!-- JS Part End-->
     @RenderSection("Scripts", false)
 
+    <script>
+        $(function () {
+            countShopCart();
+        });
 
+    function countShopCart() {
+        debugger;
+            $.get("/Shop/Get", function (res) {
+
+                $("#countShopCart").html(res);
+            });
+            }
+
+    function AddToCart(id) {
+        debugger;
+                $.get("/Shop/AddToBasket/" + id, function (res) {
+                    debugger;
+                $("#countShopCart").html(res);
+                updateShopCart();
+            });
+        }
+
+        function updateShopCart()
+        {
+            $("#showCart").load("/ShopCart/ShowCart").fadeOut(800).fadeIn(800);
+        }
+
+    </script>
 
 </body>
 </html>

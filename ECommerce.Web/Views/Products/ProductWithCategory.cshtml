@@ -1,0 +1,43 @@
+﻿@using ECommerce.DomainModel
+
+<div class="category-module" id="latest_category">
+    <h3 class="subtitle">الکترونیکی - <a class="viewall" href="category.tpl">نمایش همه</a></h3>
+    <div class="category-module-content">
+
+        @{
+            IEnumerable<ProductGroup> productGroups = ViewBag.ProductGroup;
+            List<Product> products;
+            if (productGroups.Any())
+            {
+                <ul id="sub-cat" class="tabs">
+                    @foreach (var item in productGroups)
+                    {
+                        <li><a href="#@item.ProductGroupId"> @item.Title</a></li>
+                    }
+                </ul>
+                IEnumerable<Product_ProductGroup> product_ProductGroups = ViewBag.Product_ProductGroup;
+
+                foreach (var item in productGroups)
+                {
+                    if (product_ProductGroups.Any(pg => pg.ProductGroupId == item.ProductGroupId))
+                    {
+                        foreach (var itemProduct in product_ProductGroups.Where(pg => pg.ProductGroupId == item.ProductGroupId))
+                        {
+                            <div id="@item.ProductGroupId" class="tab_content">
+                                @Html.Action("GetProduct", "Products", new { id = itemProduct.ProductGroupId })
+                            </div>
+                        }
+
+
+                    }
+
+                }
+
+            }
+
+        }
+
+
+
+    </div>
+</div>
