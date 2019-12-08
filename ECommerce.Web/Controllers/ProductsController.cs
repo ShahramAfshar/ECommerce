@@ -66,5 +66,33 @@ namespace ECommerce.Web.Controllers
             var model = db.Product_ProductGroupRepository.GetProduct(id);
             return PartialView(model);
         }
+
+        public ActionResult ShowComments(int id)
+        {
+            return PartialView(db.CommentRepository.GetForProduct(id));
+        }
+
+        public ActionResult CreateComment(int id)
+        {
+            return PartialView(new Comment()
+            {
+                ProductID = id
+            });
+        }
+
+        [HttpPost]
+        public ActionResult CreateComment(Comment  comment)
+        {
+            if (ModelState.IsValid)
+            {
+                comment.CreateDate = DateTime.Now;
+                db.CommentRepository.Insert(comment);
+                db.Commit();
+
+                return PartialView("ShowComments", db.CommentRepository.GetForProduct(comment.ProductID));
+
+            }
+            return PartialView(comment);
+        }
     }
 }

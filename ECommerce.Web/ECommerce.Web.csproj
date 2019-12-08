@@ -2230,6 +2230,8 @@
     <Content Include="Views\ShopCart\ShowCart.cshtml" />
     <Content Include="Views\Wish\ShowWish.cshtml" />
     <Content Include="Views\Products\GetSingleProduct.cshtml" />
+    <Content Include="Views\Products\ShowComments.cshtml" />
+    <Content Include="Views\Products\CreateComment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

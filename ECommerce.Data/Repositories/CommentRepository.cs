@@ -14,7 +14,7 @@ namespace ECommerce.Data.Repositories
         public interface ICommentRepository : IRepository<Comment>
         {
             //------Definition Private Functions Model -------------//
-            //   IList<User> GetActiveUsers();
+            IEnumerable<Comment> GetForProduct(int productId);
 
         }
 
@@ -27,15 +27,20 @@ namespace ECommerce.Data.Repositories
                 this.db = (this.db ?? (MyDbContext)db);
             }
 
-            //public IList<User> GetActiveUsers()
-            //{
-            //    var users = GetAll().Where(u => u.IsActive)
-            //        .ToList();
-            //    return users;
-            //}
+        public IEnumerable<Comment> GetForProduct(int productId)
+        {
+            return GetAll().Where(c => c.ProductID == productId);
+        }
+
+        //public IList<User> GetActiveUsers()
+        //{
+        //    var users = GetAll().Where(u => u.IsActive)
+        //        .ToList();
+        //    return users;
+        //}
 
 
 
-    
+
     }
 }
