@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ECommerce.DomainModel;
 
 namespace ECommerce.Web.Controllers
 {
@@ -14,18 +15,19 @@ namespace ECommerce.Web.Controllers
         // GET: Compare
         public ActionResult Index()
         {
-            List<DataLayer.ViewModels.CompareItem> list = new List<DataLayer.ViewModels.CompareItem>();
+            List<CompareItem> list = new List<CompareItem>();
 
             if (Session["Compare"] != null)
             {
-                list = Session["Compare"] as List<DataLayer.ViewModels.CompareItem>;
+                list = Session["Compare"] as List<CompareItem>;
             }
-            List<DataLayer.Features> features = new List<DataLayer.Features>();
-            List<DataLayer.Product_Features> productFeatures = new List<DataLayer.Product_Features>();
+            List<Feature> features = new List<Feature>();
+            List<Product_Feature> productFeatures = new List<Product_Feature>();
             foreach (var item in list)
             {
-                features.AddRange(db.Product_Features.Where(p => p.ProductID == item.ProductID).Select(f => f.Features).ToList());
-                productFeatures.AddRange(db.Product_Features.Where(p => p.ProductID == item.ProductID).ToList());
+                features.AddRange(db.Product_FeatureRepository.GetAll().Where(p => p.ProductID == item.ProductID).Select(f => f.Features).ToList());
+
+                productFeatures.AddRange(db.Product_FeatureRepository.GetAll().Where(p => p.ProductID == item.ProductID).ToList());
             }
             ViewBag.features = features.Distinct().ToList();
             ViewBag.productFeatures = productFeatures;
@@ -34,20 +36,20 @@ namespace ECommerce.Web.Controllers
 
         public ActionResult AddToCompare(int id)
         {
-            List<DataLayer.ViewModels.CompareItem> list = new List<DataLayer.ViewModels.CompareItem>();
+            List<CompareItem> list = new List<CompareItem>();
 
             if (Session["Compare"] != null)
             {
-                list = Session["Compare"] as List<DataLayer.ViewModels.CompareItem>;
+                list = Session["Compare"] as List<CompareItem>;
             }
 
             if (!list.Any(p => p.ProductID == id))
             {
-                var product = db.Products.Where(p => p.ProductID == id).Select(p => new { p.Title, p.ImageName }).Single();
-                list.Add(new DataLayer.ViewModels.CompareItem()
+                var product = db.ProductRepository.GetAll().Where(p => p.ProductId == id).Select(p => new { p.ProductTitle, p.ImageName }).Single();
+                list.Add(new CompareItem()
                 {
                     ProductID = id,
-                    Title = product.Title,
+                    Title = product.ProductTitle,
                     ImageName = product.ImageName
                 });
             }
@@ -58,22 +60,22 @@ namespace ECommerce.Web.Controllers
 
         public ActionResult ListCompare()
         {
-            List<DataLayer.ViewModels.CompareItem> list = new List<DataLayer.ViewModels.CompareItem>();
+            List<CompareItem> list = new List<CompareItem>();
 
             if (Session["Compare"] != null)
             {
-                list = Session["Compare"] as List<DataLayer.ViewModels.CompareItem>;
+                list = Session["Compare"] as List<CompareItem>;
             }
             return PartialView(list);
         }
 
         public ActionResult DeleteFromCompare(int id)
         {
-            List<DataLayer.ViewModels.CompareItem> list = new List<DataLayer.ViewModels.CompareItem>();
+            List<CompareItem> list = new List<CompareItem>();
 
             if (Session["Compare"] != null)
             {
-                list = Session["Compare"] as List<DataLayer.ViewModels.CompareItem>;
+                list = Session["Compare"] as List<CompareItem>;
                 int index = list.FindIndex(p => p.ProductID == id);
                 list.RemoveAt(index);
                 Session["Compare"] = list;
