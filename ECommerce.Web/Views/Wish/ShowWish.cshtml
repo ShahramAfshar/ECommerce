@@ -30,8 +30,8 @@
                         @foreach (var item in Model)
                         {
                             <tr>
-                                <td class="text-center"><a href="product.html"><img src="/Images/ProductImages/Thumb/@item.ImageName" alt="@item.Title" title="@item.Title"></a></td>
-                                <td class="text-left"><a href="product.html">@item.Title</a></td>
+                                <td class="text-center"><a href="/Products/GetSingleProduct?productId=@item.ProductID"><img src="/Images/ProductImages/Thumb/@item.ImageName" alt="@item.Title" title="@item.Title"></a></td>
+                                <td class="text-left"><a href="/Products/GetSingleProduct?productId=@item.ProductID">@item.Title</a></td>
                                 <td class="text-left">@item.Count</td>
                                 <td>
                                     <a class="btn btn-primary" title="" data-toggle="tooltip" onclick="AddToCart(@item.ProductID)"  data-original-title="افزودن به سبد"><i class="fa fa-shopping-cart"></i></a>

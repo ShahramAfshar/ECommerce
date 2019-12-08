@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Verify";
+}
+
+@if (ViewBag.IsSuccess)
+{
+    <div class="alert alert-success">
+        <p class="text-success">
+            <h2>تراکنش با موفقیت انجام شد</h2>
+            <h2>کد پیگیر شما @ViewBag.RefId</h2>
+
+        </p>
+    </div>
+}
+else
+{
+    <div class="alert alert-danger">
+        <p class="text-danger">
+            <h2>تراکنش با شکست مواجه شد</h2>
+            <h2>کد پیگیر شما @ViewBag.RefId</h2>
+
+        </p>
+    </div>
+}
+
+

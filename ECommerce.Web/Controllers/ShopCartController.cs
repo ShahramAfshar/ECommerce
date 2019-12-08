@@ -170,7 +170,7 @@ namespace ECommerce.Web.Controllers
             string Authority;
 
             //زمان  خرید واقعی کد 32 رقمی زرین پال خود را در آرگومان اول این متدود وارد  میکنیم
-            int Status = zp.PaymentRequest("YOUR-ZARINPAL-MERCHANT-CODE", Amount, "تست درگاه زرین پال", "shahram.afshar69@gmail.com", "09195913017", "https://localhost:44346/Shop/Verify?orderId=" + order.OrderID, out Authority);
+            int Status = zp.PaymentRequest("YOUR-ZARINPAL-MERCHANT-CODE", Amount, "تست درگاه زرین پال", "shahram.afshar69@gmail.com", "09195913017", "https://localhost:44383/Shopcart/Verify?orderId=" + order.OrderID, out Authority);
 
             if (Status == 100)
             {

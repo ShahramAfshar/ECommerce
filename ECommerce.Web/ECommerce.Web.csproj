@@ -2265,6 +2265,7 @@
     <Content Include="Views\Products\ShowComments.cshtml" />
     <Content Include="Views\Products\CreateComment.cshtml" />
     <Content Include="Views\ShopCart\Payment.cshtml" />
+    <Content Include="Views\ShopCart\Verify.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
