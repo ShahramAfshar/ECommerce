@@ -137,15 +137,18 @@ namespace ECommerce.Web.Controllers
         public ActionResult Payment()
         {
             //string userId = db.Users.Single(u => u.UserName == User.Identity.Name).UserID;
+            var listDetails = getListOrder();
+            int Amount = listDetails.Sum(p => p.Sum);
             Order order = new Order()
             {
                 Id = User.Identity.GetUserId(),
                 Date = DateTime.Now,
                 IsFinaly = false,
+                SumOrder=Amount
             };
             db.OrderRepository.Insert(order);
 
-            var listDetails = getListOrder();
+
 
             foreach (var item in listDetails)
             {
@@ -159,9 +162,82 @@ namespace ECommerce.Web.Controllers
             }
             db.Commit();
 
-            //TODO : Online Payment
 
-            return null;
+
+
+            System.Net.ServicePointManager.Expect100Continue = false;
+            ZarinPalService.PaymentGatewayImplementationServicePortTypeClient zp = new ZarinPalService.PaymentGatewayImplementationServicePortTypeClient();
+            string Authority;
+
+            //زمان  خرید واقعی کد 32 رقمی زرین پال خود را در آرگومان اول این متدود وارد  میکنیم
+            int Status = zp.PaymentRequest("YOUR-ZARINPAL-MERCHANT-CODE", Amount, "تست درگاه زرین پال", "shahram.afshar69@gmail.com", "09195913017", "https://localhost:44346/Shop/Verify?orderId=" + order.OrderID, out Authority);
+
+            if (Status == 100)
+            {
+                //آدرس واقعی در زمان خرید دامنه
+                //  Response.Redirect("https://www.zarinpal.com/pg/StartPay/" + Authority);
+
+                //آدرس تست
+                Response.Redirect("https://sandbox.zarinpal.com/pg/StartPay/" + Authority);
+            }
+            else
+            {
+                ViewBag.Error = "Error" + Status;
+            }
+
+
+
+            return View();
+        }
+
+
+        //برگشت از سایت رزین پال و تایید تراکنش
+        public ActionResult Verify(int orderId)
+        {
+            var order = db.OrderRepository.GetById(orderId);
+
+
+            if (Request.QueryString["Status"] != "" && Request.QueryString["Status"] != null && Request.QueryString["Authority"] != "" && Request.QueryString["Authority"] != null)
+            {
+                if (Request.QueryString["Status"].ToString().Equals("OK"))
+                {
+                    int Amount = order.SumOrder;
+                    long RefID;
+                    System.Net.ServicePointManager.Expect100Continue = false;
+                    ZarinPalService.PaymentGatewayImplementationServicePortTypeClient zp = new ZarinPalService.PaymentGatewayImplementationServicePortTypeClient();
+
+                    int Status = zp.PaymentVerification("YOUR-ZARINPAL-MERCHANT-CODE", Request.QueryString["Authority"].ToString(), Amount, out RefID);
+
+                    if (Status == 100)
+                    {
+                        order.IsFinaly = true;
+                        db.OrderRepository.Update(order);
+                        db.Commit();
+
+                        Session["ShopCart"] = null;
+
+                        ViewBag.IsSuccess = true;
+                        ViewBag.RefId = RefID;
+                    }
+                    else
+                    {
+                        ViewBag.IsSuccess = false;
+                        ViewBag.Status = Status;
+                    }
+
+                }
+                else
+                {
+                    Response.Write("Error! Authority: " + Request.QueryString["Authority"].ToString() + " Status: " + Request.QueryString["Status"].ToString());
+                }
+            }
+            else
+            {
+                Response.Write("Invalid Input");
+            }
+
+
+            return View();
         }
 
         public ActionResult DeleteShopCart(int id)

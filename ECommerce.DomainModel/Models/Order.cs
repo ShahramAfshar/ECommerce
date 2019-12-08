@@ -18,6 +18,7 @@ namespace ECommerce.DomainModel
         public DateTime Date { get; set; }
         public bool IsFinaly { get; set; }
 
+        public int SumOrder { get; set; }
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
         public virtual User User { get; set; }
 

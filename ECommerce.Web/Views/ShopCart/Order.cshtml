@@ -1,5 +1,89 @@
 ﻿@model IEnumerable<ECommerce.DomainModel.ShowOrderViewModel>
 
+<div class="row">
+    <!--Middle Part Start-->
+    <div id="content" class="col-sm-12">
+        <h1 class="title">سبد خرید</h1>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <td class="text-center">تصویر</td>
+                        <td class="text-left">نام محصول</td>
+                        <td class="text-left">تعداد</td>
+                        <td class="text-right">قیمت واحد</td>
+                        <td class="text-right">کل</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="text-center"><a href="product.html"><img src="~/Images/ProductImages/Thumb/@item.ImageName" alt="@item.Title" title="@item.Title" class="img-thumbnail" /></a></td>
+                            <td class="text-left">
+                                <a href="product.html">@item.Title</a><br />
+                                <small>امتیازات خرید: 1000</small>
+                            </td>
+                            <td class="text-left">
+                                <input name="points" min="1" max="30" step="1" value="@item.Count" onchange="commandOrder(@item.ProductID,$(this).val())" type="number">
+                            </td>
+                            <td class="text-right">@item.Price.ToString("#,0") تومان</td>
+                            <td class="text-right">@item.Sum.ToString("#,0") تومان</td>
+                        </tr>
+                    }
+                    </tbody>
+            </table>
+        </div>
+        <h2 class="subtitle">حالا مایلید چه کاری انجام دهید؟</h2>
+        <p>در صورتی که کد تخفیف در اختیار دارید میتوانید از آن در اینجا استفاده کنید.</p>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">استفاده از کوپن تخفیف</h4>
+                    </div>
+                    <div id="collapse-coupon" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <label class="col-sm-4 control-label" for="input-coupon">کد تخفیف خود را در اینجا وارد کنید</label>
+                            <div class="input-group">
+                                <input type="text" name="coupon" value="" placeholder="کد تخفیف خود را در اینجا وارد کنید" id="input-coupon" class="form-control" />
+                                <span class="input-group-btn">
+                                    <input type="button" value="اعمال کد تخفیف" id="button-coupon" data-loading-text="بارگذاری ..." class="btn btn-primary" />
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">استفاده از کارت هدیه</h4>
+                    </div>
+                    <div id="collapse-voucher" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <label class="col-sm-4 control-label" for="input-voucher">کد کارت هدیه را در اینجا وارد کنید</label>
+                            <div class="input-group">
+                                <input type="text" name="voucher" value="" placeholder="کد کارت هدیه را در اینجا وارد کنید" id="input-voucher" class="form-control" />
+                                <span class="input-group-btn">
+                                    <input type="submit" value="اعمال کارت هدیه" id="button-voucher" data-loading-text="بارگذاری ..." class="btn btn-primary" />
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="buttons">
+            <div class="pull-left"><a href="index.html" class="btn btn-default">ادامه خرید</a></div>
+            <div class="pull-right"><a href="/ShopCart/Payment" class="btn btn-primary">تایید و پرداخت</a></div>
+        </div>
+    </div>
+    <!--Middle Part End -->
+</div>
+
+
 <div class="row basket-style">
     <section class="border-radius">
         <div class="tbl-head">
@@ -17,7 +101,7 @@
 
             @foreach (var item in Model)
             {
-                            <!-- Each Row -->
+                <!-- Each Row -->
                 <ul>
                     <li>
                         <a href="" class="product-image"><img class="border-radius" src="~/Images/ProductImages/Thumb/@item.ImageName"></a>
@@ -38,13 +122,13 @@
                         <a onclick="commandOrder(@item.ProductID,0)"><i class="delete-button">X</i></a>
                     </li>
                 </ul>
-            <!-- End Each Row -->
+                <!-- End Each Row -->
             }
 
         </div>
         <div class="tbl-footer">
             <ul>
-                <li> قیمت کل : <span> @Model.Sum(p=>p.Sum).ToString("#,0") تومان </span></li>
+                <li> قیمت کل : <span> @Model.Sum(p => p.Sum).ToString("#,0") تومان </span></li>
                 <li class="total-price"> مبلغ قابل پرداخت : <span> @Model.Sum(p => p.Sum).ToString("#,0") تومان </span></li>
             </ul>
         </div>
@@ -52,3 +136,6 @@
         <div class="clearfix"></div>
     </section>
 </div>
+
+
+
