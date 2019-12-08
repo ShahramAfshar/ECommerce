@@ -18,5 +18,8 @@ namespace ECommerce.DomainModel
         public Nullable<int> ParentID { get; set; }
 
 
+        public virtual ICollection<Comment> Comments { get; set; }
+        public virtual Comment Comment2 { get; set; }
+        public virtual Product Product { get; set; }
     }
 }
