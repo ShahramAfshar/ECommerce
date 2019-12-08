@@ -14,8 +14,9 @@ namespace ECommerce.Data
         TagRepository TagRepository { get; }
         OrderRepository OrderRepository { get; }
         SliderRepository SliderRepository { get; }
-        ProductRepository ProductRepository { get; }
         FeatureRepository FeatureRepository { get; }
+        ProductRepository ProductRepository { get; }
+        CommentRepository  CommentRepository { get; }
         OrderDetailRepository  OrderDetailRepository { get; }
         ProductGroupRepository ProductGroupRepository { get; }
         ProductGaleryRepository ProductGaleryRepository { get; }

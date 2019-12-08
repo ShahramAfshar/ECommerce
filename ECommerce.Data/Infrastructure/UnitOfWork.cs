@@ -96,6 +96,20 @@ namespace ECommerce.Data
             }
         }
 
+        private CommentRepository commentRepository;
+        public CommentRepository CommentRepository
+        {
+            get
+            {
+                if (commentRepository == null)
+                {
+                    commentRepository = new CommentRepository(db);
+                }
+
+                return commentRepository;
+            }
+        }
+
         private ProductRepository productRepository;
         public ProductRepository ProductRepository
         {
