@@ -198,6 +198,7 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CompareController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\ShopCartController.cs" />
@@ -2273,6 +2274,7 @@
     <Folder Include="Areas\User\Models\" />
     <Folder Include="Images\ProductImages\Thumb\" />
     <Folder Include="Images\Slider\" />
+    <Folder Include="Views\Compare\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

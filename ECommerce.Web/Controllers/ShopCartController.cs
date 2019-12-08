@@ -195,7 +195,7 @@ namespace ECommerce.Web.Controllers
         public ActionResult Verify(int orderId)
         {
             var order = db.OrderRepository.GetById(orderId);
-
+            ViewBag.IsSuccess = false;
 
             if (Request.QueryString["Status"] != "" && Request.QueryString["Status"] != null && Request.QueryString["Authority"] != "" && Request.QueryString["Authority"] != null)
             {
