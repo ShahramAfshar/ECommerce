@@ -2267,6 +2267,8 @@
     <Content Include="Views\Products\CreateComment.cshtml" />
     <Content Include="Views\ShopCart\Payment.cshtml" />
     <Content Include="Views\ShopCart\Verify.cshtml" />
+    <Content Include="Views\Compare\Index.cshtml" />
+    <Content Include="Views\Compare\ListCompare.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2274,7 +2276,6 @@
     <Folder Include="Areas\User\Models\" />
     <Folder Include="Images\ProductImages\Thumb\" />
     <Folder Include="Images\Slider\" />
-    <Folder Include="Views\Compare\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
