@@ -2229,6 +2229,7 @@
     <Content Include="Views\Products\GetProduct.cshtml" />
     <Content Include="Views\ShopCart\ShowCart.cshtml" />
     <Content Include="Views\Wish\ShowWish.cshtml" />
+    <Content Include="Views\Products\GetSingleProduct.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

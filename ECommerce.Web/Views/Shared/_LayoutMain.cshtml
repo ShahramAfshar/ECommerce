@@ -43,10 +43,10 @@
                                 <li><a href=""><i class="fa fa fa-balance-scale"></i>  مقایسه <span>10</span></a></li>
                                 <li><a href="/wish/ShowWish"><i class="fa fa-heart"></i>  علاقه مندی ها <span id="countWish"></span></a></li>
                                 @*<li>
-                                    <div id="showCart">
-                                        @Html.Action("ShowCart", "ShopCart", new { area = "" })
-                                    </div>
-                                </li>*@
+                                        <div id="showCart">
+                                            @Html.Action("ShowCart", "ShopCart", new { area = "" })
+                                        </div>
+                                    </li>*@
                             </ul>
                         </div>
                         <!-- End Social -->
@@ -598,52 +598,56 @@
     <script type="text/javascript" src="/Template/js/jquery.easing-1.3.min.js"></script>
     <script type="text/javascript" src="/Template/js/jquery.dcjqaccordion.min.js"></script>
     <script type="text/javascript" src="/Template/js/owl.carousel.min.js"></script>
+
     <script type="text/javascript" src="/Template/js/custom.js"></script>
+
+
+
     <!-- JS Part End-->
     @RenderSection("Scripts", false)
 
     <script>
+
         $(function () {
             countShopCart();
             countwish();
         });
 
-    function countShopCart() {
-        debugger;
+        function countShopCart() {
+            debugger;
             $.get("/Shopcart/Get", function (res) {
 
                 $("#countShopCart").html(res);
             });
-    }
-      function countwish() {
+        }
+        function countwish() {
             $.get("/wish/Get", function (res) {
 
                 $("#countWish").html(res);
             });
-            }
+        }
 
-    function AddToCart(id) {
-        debugger;
-                $.get("/Shopcart/AddToBasket/" + id, function (res) {
-                    debugger;
+        function AddToCart(id) {
+            debugger;
+            $.get("/Shopcart/AddToBasket/" + id, function (res) {
+                debugger;
                 $("#countShopCart").html(res);
                 updateShopCart();
             });
-    }
+        }
         function AddToWish(id) {
-        debugger;
-                $.get("/wish/AddToWish/" + id, function (res) {
+            debugger;
+            $.get("/wish/AddToWish/" + id, function (res) {
                 $("#countWish").html(res);
             });
         }
 
-        function updateShopCart()
-        {
+        function updateShopCart() {
             $("#showCart").load("/ShopCart/ShowCart").fadeOut(800).fadeIn(800);
-            }
-    function deleteWish(id) {
+        }
+        function deleteWish(id) {
 
-    }
+        }
 
     </script>
 

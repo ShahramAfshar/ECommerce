@@ -14,6 +14,22 @@ namespace ECommerce.Web.Controllers
 
         private readonly UnitOfWork<MyDbContext> db = new UnitOfWork<MyDbContext>();
 
+        public ActionResult GetSingleProduct(int productId)
+        {
+            var product = db.ProductRepository.GetById(productId);
+            ViewBag.ProductFeatures = product.Product_Features.Select(f => new ShowProductFeatureViewModel()
+            {
+                FeatureTitle = f.Features.FeatureTitle,
+                Values = db.Product_FeatureRepository.GetAll().Where(fe => fe.FeatureID == f.FeatureID).Distinct().Select(fe => fe.Value).ToList()
+            }).ToList();
+            if (product == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(product);
+        }
+
         public ActionResult GetMaxSale()
         {
             var model = db.ProductRepository.GetMaxSale(0, 5);

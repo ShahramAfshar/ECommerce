@@ -88,6 +88,7 @@
     <Compile Include="Models\Slider.cs" />
     <Compile Include="Models\Tag.cs" />
     <Compile Include="ViewModels\AdminViewModel.cs" />
+    <Compile Include="ViewModels\ProductViewModel.cs" />
     <Compile Include="ViewModels\ShopCartViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

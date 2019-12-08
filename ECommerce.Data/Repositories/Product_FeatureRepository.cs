@@ -14,7 +14,7 @@ namespace ECommerce.Data.Repositories
     public interface IProduct_FeatureRepository : IRepository<Product_Feature>
     {
         //------Definition Private Functions Model -------------//
-        //   IList<User> GetActiveUsers();
+          //IEnumerable<Feature> GetFoProduct();
 
     }
 
@@ -26,6 +26,14 @@ namespace ECommerce.Data.Repositories
         {
             this.db = (this.db ?? (MyDbContext)db);
         }
+
+        //public IEnumerable<Feature> GetFoProduct()
+        //{
+        //    GetAll().Where(fe => fe.FeatureID == f.FeatureID))
+
+        //    //db.Product_Features.Where(fe => fe.FeatureID == f.FeatureID).Select(fe => fe.Value).ToList()
+        //    //}).ToList()
+        //}
 
         //public IList<User> GetActiveUsers()
         //{
