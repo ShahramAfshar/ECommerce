@@ -658,7 +658,13 @@
         function updateShopCart() {
             $("#showCart").load("/ShopCart/ShowCart").fadeOut(800).fadeIn(800);
         }
-        function deleteWish(id) {
+        function deleteCart(id) {
+            $.get("/shopcart/DeleteShopCart/" + id, function (res) {
+                $("#myListCart").html(res);
+                countShopCart();
+            });
+    }
+            function deleteWish(id) {
 
         }
 
@@ -666,6 +672,7 @@
         function DeleteCompare(id) {
             $.get("/Compare/DeleteFromCompare/" + id, function (res) {
                 $('#listCompare').html(res);
+                countCompare()
             });
 
         }

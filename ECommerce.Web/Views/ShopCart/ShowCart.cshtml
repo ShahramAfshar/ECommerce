@@ -1,51 +1,9 @@
-﻿@model IEnumerable<ECommerce.DomainModel.ShopCartItemViewModel>
+﻿
 
 @{
     ViewBag.Title = "سبد خرید";
 }
 
-
-@if (Model.Any())
-{
-
-
-<div class="row">
-    <!--Middle Part Start-->
-    <div id="content" class="col-sm-12">
-        <h1 class="title">سبد خرید شما</h1>
-        <div class="table-responsive">
-            <table class="table table-bordered table-hover">
-                <thead>
-                    <tr>
-                        <td class="text-center">تصویر</td>
-                        <td class="text-left">نام محصول</td>
-                        <td class="text-left">تعداد</td>
-                        <td class="text-right">عملیات</td>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td class="text-center"><a href="/Products/GetSingleProduct?productId=@item.ProductID"><img src="/Images/ProductImages/Thumb/@item.ImageName" alt="@item.Title" title="@item.Title"></a></td>
-                            <td class="text-left"><a href="/Products/GetSingleProduct?productId=@item.ProductID">@item.Title</a></td>
-                            <td class="text-left">@item.Count</td>
-                            <td>
-                                <a class="btn btn-danger" title="" data-toggle="tooltip" href="/ShopCart/DeleteShopCart/@item.ProductID" data-original-title="حذف"><i class="fa fa-times"></i></a>
-                            </td>
-                        </tr>
-                    }
-
-
-
-
-
-                </tbody>
-            </table>
-            <a href="/ShopCart" class="btn btn-primary">نهایی کردن خرید</a>
-        </div>
-    </div>
-    <!--Middle Part End -->
+<div id="myListCart">
+    @Html.Action("ListCart")
 </div>
-}

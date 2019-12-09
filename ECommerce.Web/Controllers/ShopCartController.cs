@@ -57,6 +57,13 @@ namespace ECommerce.Web.Controllers
 
         public ActionResult ShowCart()
         {
+
+
+            return View();
+        }
+
+        public ActionResult ListCart()
+        {
             List<ShopCartItemViewModel> list = new List<ShopCartItemViewModel>();
 
             if (Session["ShopCart"] != null)
@@ -77,8 +84,7 @@ namespace ECommerce.Web.Controllers
                     });
                 }
             }
-
-            return View(list);
+            return PartialView(list);
         }
 
         public ActionResult Index()
@@ -250,7 +256,7 @@ namespace ECommerce.Web.Controllers
             listShop.RemoveAt(index);
             Session["ShopCart"] = listShop;
 
-            return RedirectToAction("ShowCart");
+            return RedirectToAction("ListCart");
         }
     }
 }

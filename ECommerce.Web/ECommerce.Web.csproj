@@ -2269,6 +2269,7 @@
     <Content Include="Views\ShopCart\Verify.cshtml" />
     <Content Include="Views\Compare\Index.cshtml" />
     <Content Include="Views\Compare\ListCompare.cshtml" />
+    <Content Include="Views\ShopCart\ListCart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
