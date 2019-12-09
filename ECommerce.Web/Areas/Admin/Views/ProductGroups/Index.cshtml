@@ -62,7 +62,7 @@
         }
 
         function deleteGroup(id) {
-            if (confirm("Are You Sure?")) {
+            if (confirm("آیا از حذف این آیتم اطمینان دارید؟")) {
                 $.get('/admin/productgroups/Delete/' + id, function () {
                     $('#group_' + id).hide('slow');
 
