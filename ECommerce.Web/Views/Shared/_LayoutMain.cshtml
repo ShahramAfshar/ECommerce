@@ -663,10 +663,12 @@
         }
 
 
-        //function DeleteCompare(id) {
-        //    $.get("/Compare/DeleteFromCompare/" + id);
+        function DeleteCompare(id) {
+            $.get("/Compare/DeleteFromCompare/" + id, function (res) {
+                $('#listCompare').html(res);
+            });
 
-        //}
+        }
 
     </script>
 

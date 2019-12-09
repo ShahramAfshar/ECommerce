@@ -15,23 +15,8 @@ namespace ECommerce.Web.Controllers
         // GET: Compare
         public ActionResult Index()
         {
-            List<CompareItem> list = new List<CompareItem>();
-
-            if (Session["Compare"] != null)
-            {
-                list = Session["Compare"] as List<CompareItem>;
-            }
-            List<Feature> features = new List<Feature>();
-            List<Product_Feature> productFeatures = new List<Product_Feature>();
-            foreach (var item in list)
-            {
-                features.AddRange(db.Product_FeatureRepository.GetAll().Where(p => p.ProductID == item.ProductID).Select(f => f.Features).ToList());
-
-                productFeatures.AddRange(db.Product_FeatureRepository.GetAll().Where(p => p.ProductID == item.ProductID).ToList());
-            }
-            ViewBag.features = features.Distinct().ToList();
-            ViewBag.productFeatures = productFeatures;
-            return View(list);
+         
+            return View();
         }
 
 
@@ -77,6 +62,16 @@ namespace ECommerce.Web.Controllers
             {
                 list = Session["Compare"] as List<CompareItem>;
             }
+            List<Feature> features = new List<Feature>();
+            List<Product_Feature> productFeatures = new List<Product_Feature>();
+            foreach (var item in list)
+            {
+                features.AddRange(db.Product_FeatureRepository.GetAll().Where(p => p.ProductID == item.ProductID).Select(f => f.Features).ToList());
+
+                productFeatures.AddRange(db.Product_FeatureRepository.GetAll().Where(p => p.ProductID == item.ProductID).ToList());
+            }
+            ViewBag.features = features.Distinct().ToList();
+            ViewBag.productFeatures = productFeatures;
             return PartialView(list);
         }
 
@@ -91,7 +86,7 @@ namespace ECommerce.Web.Controllers
                 list.RemoveAt(index);
                 Session["Compare"] = list;
             }
-            return  RedirectToAction("Index");
+            return  RedirectToAction("ListCompare");
 
         }
     }
