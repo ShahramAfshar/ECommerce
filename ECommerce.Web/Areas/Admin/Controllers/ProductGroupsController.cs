@@ -47,8 +47,9 @@ namespace ECommerce.Web.Areas.Admin.Controllers
         public ActionResult Create(int? id)
         {
 
-            // ViewBag.parentId = id;
-            return PartialView(new ProductGroup() { ParentId = id });
+
+            ProductGroup productGroup = new ProductGroup() { ParentId = id };
+            return PartialView(productGroup);
         }
 
         [HttpPost]

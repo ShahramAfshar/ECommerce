@@ -18,26 +18,29 @@
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
-                @if (item.ListProductGroup.Any())
+                @if (item.ListProductGroup!=null)
+                {
+                if (item.ListProductGroup.Any())
                 {
                     <ul>
                         @foreach (var subGroup in item.ListProductGroup)
                         {
-                        <li id="group_@subGroup.ProductGroupId">
-                            @subGroup.Title |
+                            <li id="group_@subGroup.ProductGroupId">
+                                @subGroup.Title |
 
-                            <a onclick="deleteGroup(@subGroup.ProductGroupId)" class="text-danger btn-xs">
-                                <i class="glyphicon glyphicon-trash"></i> 
-                            </a>
-                            |
+                                <a onclick="deleteGroup(@subGroup.ProductGroupId)" class="text-danger btn-xs">
+                                    <i class="glyphicon glyphicon-trash"></i>
+                                </a>
+                                |
 
-                            <a onclick="Edit(@subGroup.ProductGroupId)" class="btn text-warning btn-xs">
-                                <i class="glyphicon glyphicon-edit"></i>
-                            </a>
-                        </li>
+                                <a onclick="Edit(@subGroup.ProductGroupId)" class="btn text-warning btn-xs">
+                                    <i class="glyphicon glyphicon-edit"></i>
+                                </a>
+                            </li>
 
                         }
                     </ul>
+                }
                 }
             </td>
             <td>
