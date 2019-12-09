@@ -8,7 +8,9 @@
 <hr />
 @if (Model.Any())
 {
-    <table class="table table-bordered">
+    <table  class="table table-bordered">
+
+
         <tr>
             <td>تصویر</td>
             @foreach (var item in Model)
@@ -17,6 +19,8 @@
                     <img style="width:100px;height:100px" class="thumbnail" src="/Images/ProductImages/Thumb/@item.ImageName" />
                 </td>
             }
+
+
         </tr>
         <tr>
             <td>محصول</td>
@@ -34,18 +38,37 @@
         }
         @foreach (var item in listFeatures)
         {
-            <tr>
-                <td>
-                    @item.FeatureTitle
-                </td>
-                @foreach (var feature in Model)
-                {
-                    <td>
-                        @string.Join(" - ", productFeatures.Where(f => f.ProductID == feature.ProductID && f.FeatureID == item.FeatureID).Select(f => f.Value).ToList())
-                    </td>
-                }
-            </tr>
+    <tr>
+        <td>
+            @item.FeatureTitle
+        </td>
+        @foreach (var feature in Model)
+        {
+    <td>
+        @string.Join(" - ", productFeatures.Where(f => f.ProductID == feature.ProductID && f.FeatureID == item.FeatureID).Select(f => f.Value).ToList())
+
+      
+    </td>
         }
+
+
+    </tr>
+        }
+
+    <tr>
+        <td>عملیات</td>
+
+        @foreach (var feature in Model)
+        {
+    <td>
+        <a class="btn btn-sm btn-danger" href="/compare/DeleteFromCompare/@feature.ProductID">حذف</a>
+        @*<a class="btn btn-sm btn-danger" onclick="DeleteCompare(@feature.ProductID)">حذف</a>*@
+        <a class="btn btn-sm btn-success" onclick="AddToCart(@feature.ProductID)">افزودن به سبد خرید</a>
+
+    </td>
+         }
+        </tr>
+
     </table>
 }
 

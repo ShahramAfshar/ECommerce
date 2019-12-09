@@ -40,7 +40,7 @@
                         <div class="socials">
                             <ul>
                                 <li><a href="/shopcart/ShowCart" title="سبد خرید"><i class="fa fa-shopping-bag"></i>  <span id="countShopCart"></span></a></li>
-                                <li><a href="" title="مقایسه"><i class="fa fa fa-balance-scale"></i>   <span>10</span></a></li>
+                                <li><a href="/Compare" title="مقایسه"><i class="fa fa fa-balance-scale"></i>   <span id="countCompare"></span></a></li>
                                 <li><a href="/wish/ShowWish" title="علاقه مندی ها"><i class="fa fa-heart"></i>  <span id="countWish"></span></a></li>
                                 @*<li>
                                         <div id="showCart">
@@ -126,7 +126,7 @@
                         <!-- جستجو Start-->
                         <div class="col-table-cell col-lg-3 col-md-3 col-sm-6 col-xs-12 inner">
                             <div id="search" class="input-group">
-                                <input id="filter_name" type="text" name="search" value="" placeholder="jsj" class="form-control input-lg" />
+                                <input id="filter_name" type="text" name="search" value="" placeholder="جستجو..." class="form-control input-lg" />
                                 <button type="button" class="button-search"><i class="fa fa-search"></i></button>
                             </div>
                         </div>
@@ -611,7 +611,9 @@
         $(function () {
             countShopCart();
             countwish();
+            countCompare();
         });
+
 
         function countShopCart() {
             debugger;
@@ -624,6 +626,12 @@
             $.get("/wish/Get", function (res) {
 
                 $("#countWish").html(res);
+            });
+        }
+        function countCompare() {
+            $.get("/Compare/CountCompate", function (res) {
+
+                $("#countCompare").html(res);
             });
         }
 
@@ -641,6 +649,11 @@
                 $("#countWish").html(res);
             });
         }
+        function AddToCompare(id) {
+            $.get("/Compare/AddToCompare/" + id, function (res) {
+                $("#countCompare").html(res);
+            });
+        }
 
         function updateShopCart() {
             $("#showCart").load("/ShopCart/ShowCart").fadeOut(800).fadeIn(800);
@@ -648,6 +661,12 @@
         function deleteWish(id) {
 
         }
+
+
+        //function DeleteCompare(id) {
+        //    $.get("/Compare/DeleteFromCompare/" + id);
+
+        //}
 
     </script>
 

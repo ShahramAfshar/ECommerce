@@ -34,7 +34,8 @@ namespace ECommerce.Web.Controllers
             return View(list);
         }
 
-        public ActionResult AddToCompare(int id)
+
+        public int AddToCompare(int id)
         {
             List<CompareItem> list = new List<CompareItem>();
 
@@ -55,7 +56,17 @@ namespace ECommerce.Web.Controllers
             }
             Session["Compare"] = list;
 
-            return PartialView("ListCompare", list);
+            return list.Count;
+        }
+        public int CountCompate()
+        {
+            List<CompareItem> list = new List<CompareItem>();
+
+            if (Session["Compare"] != null)
+            {
+                list = Session["Compare"] as List<CompareItem>;
+            }
+          return  list.Count;
         }
 
         public ActionResult ListCompare()
@@ -80,7 +91,7 @@ namespace ECommerce.Web.Controllers
                 list.RemoveAt(index);
                 Session["Compare"] = list;
             }
-            return PartialView("ListCompare", list);
+            return  RedirectToAction("Index");
 
         }
     }
