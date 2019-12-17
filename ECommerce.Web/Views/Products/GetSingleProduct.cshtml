@@ -1,8 +1,28 @@
 ﻿@model ECommerce.DomainModel.Product
 @using ECommerce.DomainModel
-
+@using ECommerce.Data;
+@using ECommerce.Data.DatabaseContext;
 @{
     ViewBag.Title = "GetSingleProduct";
+    UnitOfWork<MyDbContext> db = new UnitOfWork<MyDbContext>();
+
+
+    IEnumerable<ShowProductFeatureViewModel> test = Model.Product_Features.Distinct().Select(pf => new ShowProductFeatureViewModel()
+    {
+        FeatureTitle = pf.Features.FeatureTitle,
+        Values = db.Product_FeatureRepository.GetAll().Where(fe => fe.FeatureID == pf.FeatureID).Select(fe => fe.Value).ToList()
+    }).ToList();
+
+    foreach (var item in test)
+    {
+        <h2>@item.FeatureTitle</h2>
+
+            <h2> @string.Join(" - ",item.Values)</h2>
+     
+
+    }
+
+
 }
 
 <div>
@@ -102,9 +122,9 @@
                     <div>
                         <div id="comments">
                             <div id="commentProduct">
-                                @Html.Action("CreateComment","Products",new { id=Model.ProductId})
+                                @Html.Action("CreateComment", "Products", new { id = Model.ProductId })
                                 <ul id="listComment">
-                                    @Html.Action("ShowComments","Products",new { id=Model.ProductId})
+                                    @Html.Action("ShowComments", "Products", new { id = Model.ProductId })
                                 </ul>
                             </div>
                         </div>

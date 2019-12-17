@@ -1,0 +1,32 @@
+﻿@model IEnumerable<ECommerce.DomainModel.Product>
+@{
+    ViewBag.Title = "تنایج جستجو";
+}
+
+<section class="last-products">
+    <header><h3> تعداد @Model.Count() محصول با کلمه @ViewBag.search یافت شد . </h3></header>
+    <article>
+
+        @foreach (var item in Model)
+        {
+            <div class="product-thumb clearfix">
+                <div class="image"><a href="product.html"><img src="/Images/ProductImages/@item.ImageName" alt="@item.ProductTitle" title="@item.ProductTitle" class="img-responsive" /></a></div>
+                <div class="caption">
+                    <h4><a href="/Products/GetSingleProduct?productId=@item.ProductId">@item.ProductTitle</a></h4>
+                    <p class="price"><span class="price-new">@item.Price تومان</span><span class="price-old">122000 تومان</span><span class="saving">-10%</span></p>
+                </div>
+                <div class="button-group">
+                    <button class="btn-primary" type="button" onClick="AddToCart(@item.ProductId)"><span>افزودن به سبد</span></button>
+                    <div class="add-to-links">
+                        <button type="button" data-toggle="tooltip" title="علاقمندی" onClick="AddToWish(@item.ProductId)"><i class="fa fa-heart"></i></button>
+                        <button type="button" data-toggle="tooltip" title="مقایسه" onClick="AddToCompare(@item.ProductId)"><i class="fa fa-exchange"></i></button>
+                    </div>
+                </div>
+            </div>
+        }
+
+        <div class="clearfix"></div>
+    </article>
+</section>
+
+

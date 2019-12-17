@@ -201,6 +201,7 @@
     <Compile Include="Controllers\CompareController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\ShopCartController.cs" />
     <Compile Include="Controllers\WishController.cs" />
     <Compile Include="Global.asax.cs">
@@ -2270,6 +2271,7 @@
     <Content Include="Views\Compare\Index.cshtml" />
     <Content Include="Views\Compare\ListCompare.cshtml" />
     <Content Include="Views\ShopCart\ListCart.cshtml" />
+    <Content Include="Views\Search\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -13,7 +13,7 @@ namespace ECommerce.Data.Repositories
     public interface ITagRepository : IRepository<Tag>
     {
         //------Definition Private Functions Model -------------//
-        //   IList<User> GetActiveUsers();
+          IEnumerable<Product> Search(string q);
 
     }
 
@@ -26,12 +26,13 @@ namespace ECommerce.Data.Repositories
             this.db = (this.db ?? (MyDbContext)db);
         }
 
-        //public IList<User> GetActiveUsers()
-        //{
-        //    var users = GetAll().Where(u => u.IsActive)
-        //        .ToList();
-        //    return users;
-        //}
+        public IEnumerable<Product> Search(string q)
+        {
+            var Tags = GetAll().Where(t => t.Title == q).Select(t=>t.Product).ToList();
+            return Tags;
+        }
+
+
 
 
 

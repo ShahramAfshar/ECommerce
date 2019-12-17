@@ -17,6 +17,7 @@ namespace ECommerce.Data.Repositories
          IList<Product> GetMaxSale(int skip,int take);
          IList<Product> GetLastAdd(int skip,int take);
          IEnumerable<Product> GetSameGroup(int productId);
+        IEnumerable<Product> Search(string q);
 
     }
 
@@ -52,7 +53,12 @@ namespace ECommerce.Data.Repositories
             return null;
         }
 
+        public IEnumerable<Product> Search(string q)
+        {
+            var res = GetAll().Where(p => p.ProductTitle.Contains(q) || p.ShortDescription.Contains(q) || p.Text.Contains(q)).ToList();
 
+            return res;
+        }
     }
 
 
