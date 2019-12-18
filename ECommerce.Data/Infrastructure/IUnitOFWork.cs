@@ -17,6 +17,7 @@ namespace ECommerce.Data
         FeatureRepository FeatureRepository { get; }
         ProductRepository ProductRepository { get; }
         CommentRepository  CommentRepository { get; }
+        ContactUsRepository ContactUsRepository { get; }
         OrderDetailRepository  OrderDetailRepository { get; }
         ProductGroupRepository ProductGroupRepository { get; }
         ProductGaleryRepository ProductGaleryRepository { get; }

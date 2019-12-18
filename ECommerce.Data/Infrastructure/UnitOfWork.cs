@@ -124,6 +124,20 @@ namespace ECommerce.Data
             }
         }
 
+        private ContactUsRepository contactUsRepository;
+        public ContactUsRepository ContactUsRepository
+        {
+            get
+            {
+                if (contactUsRepository == null)
+                {
+                    contactUsRepository = new ContactUsRepository(db);
+                }
+
+                return contactUsRepository;
+            }
+        }
+
         private OrderDetailRepository orderDetailRepository;
         public OrderDetailRepository OrderDetailRepository
         {
