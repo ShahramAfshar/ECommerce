@@ -36,6 +36,7 @@ namespace ECommerce.Data.DatabaseContext
         public DbSet<Product_Feature>  Product_Features { get; set; }
         public DbSet<Product_ProductGroup>  Product_ProductGroups { get; set; }
         public DbSet<ProductGalery>   ProductGaleries { get; set; }
+        public DbSet<ContactUs>  ContactUs { get; set; }
         public DbSet<Tag>  Tags { get; set; }
 
     }

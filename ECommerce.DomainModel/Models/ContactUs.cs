@@ -24,7 +24,9 @@ namespace ECommerce.DomainModel
         [Display(Name = "پرسش")]
         [Required(ErrorMessage = " فیلد{0} نمی تواند خالی باشد")]
        [DataType(DataType.MultilineText)]
-        public int Question { get; set; }
+        public string Question { get; set; }
+
+        public DateTime CreateDate { get; set; }
 
     }
 }

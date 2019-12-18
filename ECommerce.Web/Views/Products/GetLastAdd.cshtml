@@ -4,7 +4,7 @@
         @foreach (var item in Model)
         {
             <div class="product-thumb clearfix">
-                <div class="image"><a href="product.html"><img src="/Images/ProductImages/Thumb/@item.ImageName" alt="@item.ProductTitle" title="@item.ProductTitle" class="img-responsive" /></a></div>
+                <div class="image"><a href="/Products/GetSingleProduct?productId=@item.ProductId"><img src="/Images/ProductImages/Thumb/@item.ImageName" alt="@item.ProductTitle" title="@item.ProductTitle" class="img-responsive" /></a></div>
                 <div class="caption">
                     <h4><a href="/Products/GetSingleProduct?productId=@item.ProductId">@item.ProductTitle</a></h4>
                     <p class="price"> <span class="price-new">@item.ProductTitle تومان</span> <span class="price-old">120000 تومان</span> <span class="saving">-26%</span> </p>
