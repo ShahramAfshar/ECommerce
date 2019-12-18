@@ -4,9 +4,8 @@
 }
 
 <div class="row">
-    <header><h3> تعداد @Model.Count() محصول با کلمه @ViewBag.search یافت شد . </h3></header>
+    <h3 class="subtitle"> تعداد @Model.Count() محصول با کلمه @ViewBag.search یافت شد . </h3>
 
-    <hr />
     @foreach (var item in Model)
     {
         <div class="col-md-4">

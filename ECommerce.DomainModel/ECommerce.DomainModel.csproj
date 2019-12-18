@@ -76,6 +76,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Comment.cs" />
+    <Compile Include="Models\ContactUs.cs" />
     <Compile Include="Models\Feature.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderDetail.cs" />

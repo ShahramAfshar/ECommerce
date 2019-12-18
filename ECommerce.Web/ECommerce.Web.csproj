@@ -1412,6 +1412,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Images\avatar.jpg" />
     <Content Include="Images\ProductImages\images.jpg" />
+    <Content Include="Images\storLocation.jpg" />
     <Content Include="Plugin\PersianDataPicker\css\fontawesome\.gitignore" />
     <Content Include="Plugin\PersianDataPicker\css\fontawesome\css\font-awesome.css" />
     <Content Include="Plugin\PersianDataPicker\css\fontawesome\css\font-awesome.min.css" />
