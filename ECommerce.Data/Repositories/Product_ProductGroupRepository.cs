@@ -15,6 +15,7 @@ namespace ECommerce.Data.Repositories
     {
         //------Definition Private Functions Model -------------//
          IEnumerable<Product> GetProduct(int productGroupId);
+         IEnumerable<Product> GetProduct(int productGroupId,int take);
 
     }
 
@@ -32,6 +33,14 @@ namespace ECommerce.Data.Repositories
             List<Product> list = new List<Product>();
 
              list.AddRange(GetAll().Where(pg=>pg.ProductGroupId==productGroupId).Select(g=>g.Product).ToList());
+
+            return list;
+        }
+        public IEnumerable<Product> GetProduct(int productGroupId,int take)
+        {
+            List<Product> list = new List<Product>();
+
+            list.AddRange(GetAll().Where(pg => pg.ProductGroupId == productGroupId).Select(g => g.Product).Take(take).ToList());
 
             return list;
         }

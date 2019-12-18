@@ -94,5 +94,33 @@ namespace ECommerce.Web.Controllers
             }
             return PartialView(comment);
         }
+
+        public ActionResult ProductRelative(int productId)
+        {
+           
+            Product product = db.ProductRepository.GetById(productId);
+            if (product !=null)
+            {
+                int productGroupId = product.Product_ProductGroups.Select(pg => pg.ProductGroupId).First();
+             var res=  db.Product_ProductGroupRepository.GetProduct(productGroupId,10);
+                return PartialView(res);
+            }
+       
+          //  var res = db.ProductRepository.Relative(productId);
+            return null;
+        }
+        public ActionResult GetproductByGroup(int productGroupId)
+        {
+
+            var res = db.Product_ProductGroupRepository.GetProduct(productGroupId);
+            if (res!=null)
+            {
+                ViewBag.productGroupName = db.ProductGroupRepository.GetById(productGroupId).Title;
+                return View(res);
+            }
+           return RedirectToAction("Index","Home");
+
+           
+        }
     }
 }

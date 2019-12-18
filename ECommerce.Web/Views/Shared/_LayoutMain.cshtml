@@ -14,11 +14,12 @@
     <link rel="stylesheet" type="text/css" href="/Template/css/stylesheet.css" />
     <link rel="stylesheet" type="text/css" href="/Template/css/owl.carousel.css" />
     <link rel="stylesheet" type="text/css" href="/Template/css/owl.transitions.css" />
+    <link rel="stylesheet" type="text/css" href="/Template/js/swipebox/src/css/swipebox.min.css">
     <link rel="stylesheet" type="text/css" href="/Template/css/responsive.css" />
     <link rel="stylesheet" type="text/css" href="/Template/css/stylesheet-rtl.css" />
     <link rel="stylesheet" type="text/css" href="/Template/css/responsive-rtl.css" />
-
-
+    <link rel="stylesheet" type="text/css" href="/Content/Site.css" />
+    @RenderSection("MyStyles", false)
     <!-- CSS Part End-->
 </head>
 <body>
@@ -124,12 +125,14 @@
 
                         <!-- Mini Cart End-->
                         <!-- جستجو Start-->
-                        <div class="col-table-cell col-lg-3 col-md-3 col-sm-6 col-xs-12 inner">
-                            <div id="search" class="input-group">
-                                <input id="filter_name" type="text" name="search" value="" placeholder="جستجو..." class="form-control input-lg" />
-                                <button type="button" class="button-search"><i class="fa fa-search"></i></button>
+                        <form action="/Search" method="get">
+                            <div class="col-table-cell col-lg-3 col-md-3 col-sm-6 col-xs-12 inner">
+                                <div id="search" class="input-group">
+                                    <input id="filter_name" type="text" name="q" value="" placeholder="جستجو..." class="form-control input-lg" />
+                                    <button style="background-color:cornflowerblue" type="submit" class="button-search"><i class="fa fa-search"></i></button>
+                                </div>
                             </div>
-                        </div>
+                        </form>
                         <!-- جستجو End-->
                     </div>
                 </div>
@@ -598,8 +601,14 @@
     <script type="text/javascript" src="/Template/js/jquery.easing-1.3.min.js"></script>
     <script type="text/javascript" src="/Template/js/jquery.dcjqaccordion.min.js"></script>
     <script type="text/javascript" src="/Template/js/owl.carousel.min.js"></script>
-
+    <script type="text/javascript" src="/Template/js/jquery.elevateZoom-3.0.8.min.js"></script>
+    <script type="text/javascript" src="/Template/js/swipebox/lib/ios-orientationchange-fix.js"></script>
+    <script type="text/javascript" src="/Template/js/swipebox/src/js/jquery.swipebox.min.js"></script>
     <script type="text/javascript" src="/Template/js/custom.js"></script>
+
+    <script src="/Scripts/jquery.validate.min.js"></script>
+    <script src="/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
 
 
 
@@ -663,8 +672,8 @@
                 $("#myListCart").html(res);
                 countShopCart();
             });
-    }
-            function deleteWish(id) {
+        }
+        function deleteWish(id) {
 
         }
 
@@ -676,6 +685,9 @@
             });
 
         }
+    //function search() {
+    //    window.location("/shaheam");
+    //}
 
     </script>
 

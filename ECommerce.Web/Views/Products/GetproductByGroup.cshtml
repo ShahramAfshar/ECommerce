@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<ECommerce.DomainModel.Product>
 @{
-    ViewBag.Title = "تنایج جستجو";
+    ViewBag.Title = ViewBag.productGroupName;
 }
 
 <div class="row">
-    <header><h3> تعداد @Model.Count() محصول با کلمه @ViewBag.search یافت شد . </h3></header>
+  <h3>محصولات موجود در @ViewBag.productGroupName</h3>
 
     <hr />
     @foreach (var item in Model)

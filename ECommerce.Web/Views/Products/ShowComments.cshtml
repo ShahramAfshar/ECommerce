@@ -1,11 +1,15 @@
 ﻿@model IEnumerable<ECommerce.DomainModel.Comment>
 
+
+
+
 @foreach (var item in Model.Where(c => c.ParentID == null))
 {
+
     <li>
         <a onclick="ReplyComment(@item.CommentID)" class="reply-button">پاسخ</a>
 
-        <img src="~/Images/ProductImages/images.jpg" width="65">
+        <img src="~/Images/avatar.jpg" width="65">
         <div>
             <h5>ارسال شده از : @item.Name در تاریخ : @item.CreateDate.ToString("yyyy/MM/dd") </h5>
             <p>
@@ -15,11 +19,11 @@
         <div class="clearfix"></div>
         @if (Model.Any(c => c.ParentID == item.CommentID))
         {
-            <ul>
+            <ul style="list-style:none">
                 @foreach (var sub in Model.Where(c => c.ParentID == item.CommentID))
                 {
                     <li>
-                        <img src="/Content/img/avatar.jpg" width="65">
+                        <img src="~/Images/avatar.jpg" width="65">
                         <div>
                             <h5>ارسال شده از : @sub.Name در تاریخ : @sub.CreateDate.ToString("yyyy/MM/dd") </h5>
                             <p>
@@ -32,5 +36,6 @@
             </ul>
         }
     </li>
+
 }
 

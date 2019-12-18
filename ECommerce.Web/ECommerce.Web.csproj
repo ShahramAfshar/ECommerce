@@ -1410,6 +1410,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\avatar.jpg" />
     <Content Include="Images\ProductImages\images.jpg" />
     <Content Include="Plugin\PersianDataPicker\css\fontawesome\.gitignore" />
     <Content Include="Plugin\PersianDataPicker\css\fontawesome\css\font-awesome.css" />
@@ -1576,6 +1577,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\jquery.zoom.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Template\404.html" />
     <Content Include="Template\about-us.html" />
@@ -2272,6 +2274,8 @@
     <Content Include="Views\Compare\ListCompare.cshtml" />
     <Content Include="Views\ShopCart\ListCart.cshtml" />
     <Content Include="Views\Search\Index.cshtml" />
+    <Content Include="Views\Products\ProductRelative.cshtml" />
+    <Content Include="Views\Products\GetproductByGroup.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

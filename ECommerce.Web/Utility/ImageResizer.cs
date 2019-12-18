@@ -33,7 +33,7 @@ namespace ECommerce.Web
             /// </summary>
             public ImageResizer()
             {
-                MaxX = MaxY = 150;
+                MaxX = MaxY = 66;
                 TrimImage = false;
                 SaveFormat = ImageFormat.Jpeg;
             }

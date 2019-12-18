@@ -18,6 +18,7 @@ namespace ECommerce.Data.Repositories
          IList<Product> GetLastAdd(int skip,int take);
          IEnumerable<Product> GetSameGroup(int productId);
         IEnumerable<Product> Search(string q);
+        IEnumerable<Product> Relative(int productId);
 
     }
 
@@ -58,6 +59,13 @@ namespace ECommerce.Data.Repositories
             var res = GetAll().Where(p => p.ProductTitle.Contains(q) || p.ShortDescription.Contains(q) || p.Text.Contains(q)).ToList();
 
             return res;
+        }
+
+        public IEnumerable<Product> Relative( int productId)
+        {
+          
+
+            return null;
         }
     }
 

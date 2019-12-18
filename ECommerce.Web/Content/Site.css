@@ -1,24 +1,163 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+﻿
+
+.tags-layer {
+    border: 2px solid #dfdfdf;
+    background-color: #fff;
+    position: relative;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 12px 12px 6px 12px !important;
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+    .tags-layer i {
+        position: absolute;
+        right: 13px;
+        font-size: 16px;
+        color: #B7B7B7;
+        top: 13px
+    }
+
+    .tags-layer a {
+        background-color: #E5E5E5;
+        padding: 0 8px;
+        line-height: 22px;
+        color: #888685;
+        margin: 5px;
+        border-radius: 3px;
+        -moz-border-radius: 3px;
+        -webkit-border-radius: 3px;
+    }
+
+        .tags-layer a:hover {
+            background-color: #DF7923;
+            color: #fff;
+        }
+
+
+/*************comments**************/
+
+.comment-layer .comment-list li:before {
+    content: '';
 }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
-.dl-horizontal dt {
-    white-space: normal;
+.comment-list{
+    list-style:none;
+}
+.comment-layer .btn.btn-primary {
+    background-color: #008DDE;
+    border: 0;
+    border-bottom: 3px solid #066595;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+    .comment-layer .btn.btn-primary:hover {
+        background-color: #999A9A;
+        border-bottom: 3px solid #ADADAD;
+        color: #505050
+    }
+
+.comment-layer {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #dfdfdf;
+    padding: 15px 10px 0
 }
+
+    .comment-layer .btn.btn-primary {
+        width: 100%;
+        margin-top: 15px
+    }
+
+    .comment-layer textarea {
+        min-height: 83px
+    }
+
+    .comment-layer header {
+        position: relative;
+    }
+
+        .comment-layer header h3 {
+            font-size: 18px
+        }
+
+        .comment-layer header span {
+            position: absolute;
+            padding: 0 15px;
+            left: 0;
+            top: -2px;
+            line-height: 30px;
+            color: #505050;
+            border: 1px solid #f2f2f2;
+        }
+
+    .comment-layer h6 {
+        width: 100%;
+        line-height: 25px;
+        padding: 15px 0;
+        color: #505050;
+        font-size: 18px;
+        border-bottom: 1px solid #f2f2f2
+    }
+
+    .comment-layer > ul {
+        margin: 0;
+        padding: 15px 0
+    }
+
+        .comment-layer > ul h5 {
+            font-size: 13px;
+            line-height: 12px;
+            padding-bottom: 10px
+        }
+
+        .comment-layer > ul p {
+            font-size: 13px;
+            line-height: 22px;
+            text-align: justify;
+        }
+
+        .comment-layer > ul img {
+            margin: 0 0 0 10px;
+            float: right;
+        }
+
+        .comment-layer > ul li {
+            border: 1px solid #f2f2f2;
+            padding: 20px 15px 15px;
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+            .comment-layer > ul li:after {
+                display: block;
+                clear: both;
+                content: '';
+                visibility: hidden;
+                ;
+                height: 0;
+                line-height: 0
+            }
+
+            .comment-layer > ul li a {
+                line-height: 35px
+            }
+
+    .comment-layer ul li {
+        position: relative
+    }
+
+        .comment-layer ul li .reply-button {
+            background-color: #4e4d4d;
+            color: #fff;
+            left: 10px;
+            top: 10px;
+            z-index: 1000;
+            line-height: 30px;
+            padding: 0 10px;
+            position: absolute;
+        }
+
+            .comment-layer ul li .reply-button:hover {
+                background-color: #8F8E8E
+            }
+
+            /*End Comment*/
